@@ -109,7 +109,7 @@ const baseDeDatos = [
     baseDeDatos.forEach((info) => {
       // Estructura
       const miNodo = document.createElement("div");
-      miNodo.classList.add("card", "col-sm-4");
+      miNodo.classList.add("card", "col-sm-4","text-center");
       // Body
       const miNodoCardBody = document.createElement("div");
       miNodoCardBody.classList.add("card-body");
@@ -128,9 +128,9 @@ const baseDeDatos = [
       // Boton
       const miNodoBoton = document.createElement("button");
       miNodoBoton.classList.add("btn", "btn-primary");
-      miNodoBoton.textContent = "+";
+      miNodoBoton.textContent = "Agregar al carrito";
       miNodoBoton.setAttribute("marcador", info.id);
-      miNodoBoton.addEventListener("click", anyadirProductoAlCarrito);
+      miNodoBoton.addEventListener("click", agregarProductoAlCarrito);
       // Insertamos
       miNodoCardBody.appendChild(miNodoImagen);
       miNodoCardBody.appendChild(miNodoTitle);
@@ -144,7 +144,7 @@ const baseDeDatos = [
   /**
    * Evento para añadir un producto al carrito de la compra
    */
-  function anyadirProductoAlCarrito(evento) {
+  function agregarProductoAlCarrito(evento) {
     // Anyadimos el Nodo a nuestro carrito
     carrito.push(evento.target.getAttribute("marcador"));
     // Actualizamos el carrito
@@ -173,12 +173,12 @@ const baseDeDatos = [
       }, 0);
       // Creamos el nodo del item del carrito
       const miNodo = document.createElement("li");
-      miNodo.classList.add("list-group-item", "text-right", "mx-2");
+      miNodo.classList.add("list-group-item", "text-center", "mx-5");
       miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0].nombre} - ${miItem[0].precio}${divisa}`;
       // Boton de borrar
       const miBoton = document.createElement("button");
       miBoton.classList.add("btn", "btn-danger", "mx-5");
-      miBoton.textContent = "X";
+      miBoton.textContent = "Eliminar Producto";
       miBoton.style.marginLeft = "1rem";
       miBoton.dataset.item = item;
       miBoton.addEventListener("click", borrarItemCarrito);

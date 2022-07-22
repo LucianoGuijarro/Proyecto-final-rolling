@@ -1,0 +1,23 @@
+:root {
+  --color-1: #fff;
+  --color-2: #d2d7df;
+  --color-3: #bdbbb0;
+}
+
+.title-carrito {
+  font-size: 50px;
+  margin-top: 50px;
+  text-align: center;
+}
+.total-carrito {
+  font-size: 50px;
+  margin-top: 50px;
+  text-align: left;
+}
+.btn-carrito {
+  border-radius: 5px;
+  background-color: var(--color-3);
+  width: 100px;
+  height: 50px;
+  font-size: 25px;
+}
