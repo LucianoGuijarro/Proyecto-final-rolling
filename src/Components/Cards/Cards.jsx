@@ -14,5 +14,4 @@ const Cards = ({ juego }) => {
         </>
     )
 }
-
 export default Cards
