@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import clientAxios from '../../Config/clientAxios';
 import Cards from '../Cards/Cards';
+import styles from './grid.module.css';
 
 const Grid = () => {
   const [juego, setJuego] = useState([]);
@@ -13,7 +14,7 @@ const Grid = () => {
     <>
       <div className="container">
         <h2 className='text-center'>Accion</h2>
-        <div className="row justify-content-between">
+        <div className={`row justify-content-between ${styles.contenedorCards}`}>
           {
             juego.map((juego) => {
               return <Cards juego={juego} key={juego._id} />
