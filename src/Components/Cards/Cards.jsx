@@ -3,6 +3,7 @@ import styles from './Crads.module.css';
 import { TiShoppingCart } from "react-icons/ti";
 
 const Cards = ({ juego }) => {
+    // hola soy maxi
     return (
         <>
             <div className={`${styles.card} col-sm-12 col-md-5 col-lg-2 d-flex flex-wrap justify-content-center mt-5  p-0`}>
