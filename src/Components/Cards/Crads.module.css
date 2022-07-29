@@ -8,7 +8,7 @@
 }
 .boton{
     border: none;
-    background: red;
+    background: green;
 }
 .boton:hover {
     scale: 0.3;
