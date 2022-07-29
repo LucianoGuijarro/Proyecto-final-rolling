@@ -1,0 +1,15 @@
+
+.img{
+    height: 300px;
+    width: 100%;
+}
+.titulo{
+    height: 90px;
+}
+.boton{
+    border: none;
+    background: red;
+}
+.boton:hover {
+    scale: 0.3;
+}
