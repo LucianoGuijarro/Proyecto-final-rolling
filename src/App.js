@@ -1,11 +1,15 @@
 import './App.css';
-import Grid from './Components/Grid/Grid';
+import GridJuegosAccion from './Components/GridJuegosAccion/GridJuegosAccion';
+import GridJuegosAventura from './Components/GridJuegosAventura/GridJuegosAventura';
+import GridJuegosCarreras from './Components/GridJuegosCarreras/GridJuegosCarreras';
+
 
 function App() {
   return (
     <>
-    <h1>Hola mundo</h1>
-    <Grid />
+    <GridJuegosAccion />
+    <GridJuegosCarreras />
+    <GridJuegosAventura />
     </>
   );
 }
