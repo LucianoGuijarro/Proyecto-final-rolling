@@ -1,4 +1,10 @@
-.contenedorCards{
-    flex-wrap: nowrap;
-    overflow: hidden;
+.boton{
+    float: right;
+    background: none;
+    color: white;
+    border: .1px solid black;
+}
+
+.boton:hover{
+   border: .1px solid white;
 }
