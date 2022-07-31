@@ -1,0 +1,7 @@
+.imagen{
+    height: 450px;
+    width: 70%;
+}
+.contenedor{
+    flex-wrap: wrap;
+}

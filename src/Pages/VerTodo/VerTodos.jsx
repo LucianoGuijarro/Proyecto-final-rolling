@@ -8,7 +8,7 @@ const VerTodos = () => {
     const { categoria } = useParams();
     const [juegos, setJuegos] = useState([])
     useEffect(() => {
-        clientAxios.get(`/juegos/verTodos/${categoria}`)
+        clientAxios.get(`/juegos/verTodos/${categoria.toLocaleLowerCase()}`)
             .then(response => setJuegos(response.data))
     }, [categoria])
     console.log(juegos)
