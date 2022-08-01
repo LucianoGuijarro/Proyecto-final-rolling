@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+// import components
 import App from './App';
+// import pages
+import LoginPage from './Components/Pages/LoginPage'
 import {
   BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
+// import css
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,6 +18,7 @@ root.render(
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<App />} />
+      <Route path='/Login' element={< LoginPage />} />
     </Routes>
     </BrowserRouter>
   </React.StrictMode>
