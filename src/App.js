@@ -3,10 +3,16 @@ import Grid from './Components/Grid/Grid';
 
 function App() {
   return (
-    <>
-    <h1>Hola mundo</h1>
+    <BrowserRouter>
+    <Navbar/> 
     <Grid />
-    </>
+   <Routes>
+     <Route path="/" element={<Home />}/>
+   </Routes>
+   <Footer/>
+   </BrowserRouter>
+    
+    
   );
 }
 
