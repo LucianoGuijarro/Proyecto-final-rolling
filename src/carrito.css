@@ -1,0 +1,74 @@
+body {
+  font-family: "Helvetica";
+}
+h1,
+h2,
+h3 {
+  margin: 2rem;
+}
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+h4 {
+  font-size: 2rem;
+}
+a {
+  text-decoration: none;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+.row.center {
+  align-items: center;
+}
+.col-1 {
+  flex: 4;
+}
+.col-2 {
+  flex: 6;
+}
+.block {
+  background-color: #e0e0e0;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+}
+.text-right {
+  text-align: right;
+}
+img.small {
+  max-height: 200px;
+  max-width: 200px;
+  margin: 15px 15px;
+}
+button {
+  font-size: 15px;
+  padding: 2.5px;
+  margin: 5px;
+  border-radius: 3px;
+  border: 1px #404040 solid;
+  background-color: rgb(165, 201, 202);
+  width: 50%;
+  cursor: pointer;
+}
+button.add {
+  background-color: #40c0f0;
+  width: 2.5rem;
+}
+button.remove {
+  background-color: red;
+  width: 2.5rem;
+}
+button.badge {
+  background-color: rgb(57, 91, 100);
+  border: none;
+  color: #ffffff;
+  width: 2rem;
+}
