@@ -9,6 +9,10 @@ const Login = () => {
     "countryUser":""
   })
 
+  const [errors, setErrors] = useState({})
+  const [loading, setLoading] = useState(false)
+  const [response, setResponse] = useState(null)
+
   const handleChange=( {target} )=>{
     // console.log(target.value)
     setNewUserData({
