@@ -1,139 +1,58 @@
 import React, { useState } from 'react'
-// import css
-import '../Login/Login.css';
+import './Login.css';
 
 const Login = () => {
-  const [newUserData, setNewUserData] = useState({
-    "correoUser": "",
-    "nickNameUser": "",
-    "passwordUser": "",
-    "countryUser": ""
+  const [userInit, setUserInit] = useState({
+    "emailUser": "",
+    "passwordUser": ""
   })
-  const [confirmPasword, setConfirmPasword] = useState("")
-  const [errors, setErrors] = useState({
-    "correoUser": "*Este campo es obligatorio*",
-    "nickNameUser": "*Este campo es obligatorio*",
-    "passwordUser": "*Este campo es obligatorio*",
-    "confirmPassword": "Las contraseñas deben ser iguales",
-    "countryUser": "*Este campo es obligatorio*"
-  })
-  const [loading, setLoading] = useState(false)
-  // const [response, setResponse] = useState(null)
 
-  const handleChange = ({ target }) => {
-    setNewUserData({
-      ...newUserData,
-      [target.name]: target.value
-    })
+  // const [userData, setUserData] = useState([])
+  // const [isLoading, setIsLoading] = useState(false)
 
-  }
-  // metodo post
+  // hacer un post y la logica de logue se hace en el back
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (Object.keys(errors).length === 0) {
-      setLoading(true)
-    }
-    fetch('http://localhost:8080/users', {
+    fetch('http://localhost:8080/Login/logearse', {
       method: 'POST',
-      body: JSON.stringify(newUserData),
+      body: JSON.stringify(userInit),
       headers: {
         'Content-type': 'application/json; charset=UTF-8'
       }
     })
-    .then(response => response.json())
-    .then((response) => {
-      console.log(response)
-      alert("El formulario se ah enviado")
-      setLoading(false)
+    .then(response=> response.json())
+    .then(response =>
+       console.log(response)
+       
+       )
+  }
+
+  const handleChange = ({ target }) => {
+    setUserInit({
+      ...userInit,
+      [target.name]: target.value
     })
-    .catch(error => console.log(error))
-    e.target.reset()
+    console.log(target.value);
   }
 
-  const handleBlur = ({ target }) => {
-    handleChange({ target })
-    setErrors(validateForm(newUserData))
-  }
-  const validateForm = () => {
-    let errores = {}
-    const emailValidation = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
-    const passwordValidation = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/
 
-
-    if (!newUserData.correoUser.trim()) {
-      errores.correoUser = "*Este Campo es obligatorio*"
-    } else
-      if (!emailValidation.test(newUserData.correoUser.trim())) {
-        errores.correoUser = "El email ingresado es incorrecto"
-      }
-
-    if (!newUserData.nickNameUser) {
-      errores.nickNameUser = "*Este campo es obligatorio*"
-    }
-
-    if (!newUserData.passwordUser.trim()) {
-      errores.passwordUser = "*Este Campo es obligatorio*"
-    } else if (passwordValidation.test(newUserData.passwordUser.trim())) {
-      errores.passwordUser = "Ingrese entre 8 y 16 caracteres, minusculas, mayusculas y digitos"
-    }
-
-    if (newUserData.passwordUser !== confirmPasword) {
-      errores.confirmPassword = "Las contraseñas no coinciden"
-    }
-    if (!newUserData.countryUser) {
-      errores.countryUser = "*Este campo es obligatorio*"
-    }
-    return errores
-  }
 
   return (
-    <>
-      {
-        loading ?
-          <div className="text-center pt-5">
-            <div className="spinner-border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
-          </div>
-          :
-          <div className="container col-6 form-styles p-4 align-items-center">
-            <h5 className="py-3 ">CREAR TU NUEVA CUENTA</h5>
-            <form onSubmit={handleSubmit}>
-              <div className="mb-2">
-                <label htmlFor="NewUserInputEmail1" className="form-label">Correo electronico</label>
-                <input type="email" onChange={handleChange} onBlur={handleBlur} name='correoUser' className="form-control" id="NewUserInputEmail1" aria-describedby="emailHelp" />
-                {errors.correoUser ? <p className='text-danger m-0'>{errors.correoUser}</p> : null}
-              </div>
-              <div className="mb-2">
-                <label htmlFor="nickNameUser" className="form-label">Nick Name</label>
-                <input type="text" onChange={handleChange} onBlur={handleBlur} name='nickNameUser' className="form-control" id="nickNameUser" aria-describedby="nickNameUser" />
-                {errors.nickNameUser ? <p className='text-danger m-0'>{errors.nickNameUser}</p> : null}
-              </div>
-              <div className="mb-2">
-                <label htmlFor="newUserInputPassword" className="form-label">Contraseña</label>
-                <input type="text" onChange={handleChange} onBlur={handleBlur} name='passwordUser' className="form-control" id="newUserInputPassword" />
-                {errors.passwordUser ? <p className='text-danger py-0'>{errors.passwordUser}</p> : null}
-              </div>
-              <div className="mb-2">
-                <label htmlFor="newUserPasswordConfirm" className="form-label">Confirmar Contraseña</label>
-                <input type="text" onChange={event => setConfirmPasword(event.target.value)} className="form-control" id="newUserPasswordConfirm" />
-                {errors.confirmPassword ? <p className='text-danger m-0'>{errors.confirmPassword}</p> : null}
-              </div>
-              <div className="mb-2">
-                <label htmlFor="userCountry" className="form-label">Pais de residencia</label>
-                <input type="text" onChange={handleChange} onBlur={handleBlur} name='countryUser' className="form-control" id="userCountry" />
-                {errors.countryUser ? <p className='text-danger m-0'>{errors.countryUser}</p> : null}
-              </div>
-              <div className="mb-2 form-check">
-                <input type="checkbox" className="form-check-input" id="checkConditions" />
-                <label className="form-check-label" for="checkConditions">Confirmo que tengo 13 años o mas y acepto los terminos y condiciones</label>
-              </div>
-              <button type="submit" className="btn btn-crear-cuenta container-fluid">Crear Cuenta</button>
-            </form>
-          </div>
+    <div className="container col-6 form-styles p-4 mt-5 align-items-center">
+      <h5 className="py-3 ">INICIAR SESION</h5>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-2">
+          <label htmlFor="emailUser" className="form-label">Correo electronico</label>
+          <input type="email" onChange={handleChange} name='emailUser' className="form-control" id="emailUser" aria-describedby="emailHelp" />
+        </div>
 
-      }
-    </>
+        <div className="mb-2">
+          <label htmlFor="passwordUser" className="form-label">Contraseña</label>
+          <input type="password" onChange={handleChange} name='passwordUser' className="form-control" id="passwordUser" />
+        </div>
+        <button type="submit" className="btn btn-iniciar-sesion container-fluid mt-3">Iniciar Sesion</button>
+      </form>
+    </div>
   )
 }
 
