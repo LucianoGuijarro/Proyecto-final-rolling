@@ -1,0 +1,25 @@
+:root {
+    --main-black: rgb(44, 51, 51);
+    --main-blue: rgb(57, 91, 100);
+    --main-light-blue: rgb(165, 201, 202);
+    --main-white: rgb(165, 201, 202);
+}
+
+body{
+    background-color: var(--main-black);
+}
+.form-styles{
+    background-color: var(--main-blue);
+    border-radius: 0.3rem;
+    margin-top: 3rem;
+    color: white;
+}
+
+.btn-crear-cuenta{
+   background-color: var(--main-white);
+}
+
+form input{
+    background-color: var(--main-black);
+    color: var(--main-black);
+}
