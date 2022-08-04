@@ -13,7 +13,7 @@ function App() {
 
     {/* {categorias.map(categoria => <Grid categoria={categoria} />)} */}
     <GridCategorias />
-    <Grid />
+
     </>
   );
 }

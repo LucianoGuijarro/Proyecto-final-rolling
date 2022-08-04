@@ -10,6 +10,11 @@
     border: none;
     background: green;
 }
+.botonEliminar {
+    width: 35px;
+    border: none;
+    background: none;
+}
 .boton:hover {
     scale: 0.3;
 }

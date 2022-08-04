@@ -11,7 +11,6 @@ const VerTodos = () => {
         clientAxios.get(`/juegos/verTodos/${categoria.toLocaleLowerCase()}`)
             .then(response => setJuegos(response.data))
     }, [categoria])
-    console.log(juegos)
     return (
         <>
             <div className="container">
