@@ -36,13 +36,13 @@ function App() {
   return (
     <div className="App">
       <Header countCartItems={cartItems.length}></Header>
-      <div className="row">
-        <Main products={products} onAdd={onAdd}></Main>
+      <div className="container">
         <Basket
           cartItems={cartItems}
           onAdd={onAdd}
           onRemove={onRemove}
         ></Basket>
+        <Main products={products} onAdd={onAdd}></Main>
       </div>
     </div>
   );
