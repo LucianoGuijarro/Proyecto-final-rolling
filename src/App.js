@@ -1,8 +1,11 @@
-import Basket from './components/Basket/Basket';
-import Header from './components/Header/Header';
-import Main from './components/Main/Main';
-import data from "./data"
+import Header from './components/Carrito/Header/Header';
 import { useState } from 'react';
+import Main from './components/Carrito/Main/Main';
+import data from './data'
+import Basket from './components/Carrito/Basket/Basket';
+
+
+
 function App() {
   const { products } = data;
   const [cartItems, setCartItems] = useState([]);

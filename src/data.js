@@ -4,13 +4,13 @@ const data = {
         id: '1',
         name: 'MacBook',
         price: 1400,
-        image: 'https://upload.wikimedia.org/wikipedia/en/a/a7/God_of_War_4_cover.jpg',
+        image: '',
       },
       {
         id: '2',
         name: 'Old Car',
         price: 2400,
-        image: 'https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1641233427',
+        image: '',
       },
       {
         id: '3',
