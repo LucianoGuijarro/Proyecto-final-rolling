@@ -27,7 +27,7 @@ root.render(
     <Routes>
       <Route path='/' element={<App />} />
       <Route path='/CreateNewUser' element={ <CreateNewUserPage /> } />
-      <Route path='/LogIn' element={ <LoginPage /> } />
+      <Route path='/Login' element={ <LoginPage /> } />
       <Route path='/categoria/:categoria' element={<VerTodos />} />
       <Route path='/verJuego/:id' element={< PaginaDetalle />} />
       <Route path='/admin' element={<PaginaAdmin />}/>
