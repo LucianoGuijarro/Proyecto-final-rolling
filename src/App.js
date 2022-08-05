@@ -34,9 +34,9 @@ function App() {
     }
   };
   return (
-    <div className="App">
+    <div className="App container-fluid">
       <Header countCartItems={cartItems.length}></Header>
-      <div className="container">
+      <div className="container-fluid">
         <Basket
           cartItems={cartItems}
           onAdd={onAdd}

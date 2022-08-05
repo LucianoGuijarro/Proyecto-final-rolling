@@ -36,7 +36,7 @@ export default function Basket(props) {
           <>
             <hr></hr>
             <div className="row my-5">
-              <div className="col-2 h2">Items Price</div>
+              <div className="col-2 h2">Precio</div>
               <div className="col-1 text-right h2">
                 ${itemsPrice.toFixed(2)}
               </div>
@@ -51,7 +51,7 @@ export default function Basket(props) {
             </div>
 
             <div className="row">
-              <div className="col-2 my-5 h1">
+              <div className="col-2 h1">
                 <strong>Total</strong>
               </div>
               <div className="text-right h1 col-1">
