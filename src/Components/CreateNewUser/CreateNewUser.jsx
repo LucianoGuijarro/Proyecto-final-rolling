@@ -43,7 +43,12 @@ const CreateNewUser = () => {
           'Content-type': 'application/json; charset=UTF-8'
         }
       })
-        .then(response => response.json())
+        .then(response => {
+          if(response.status !== 201){
+            return alert('Ha ocurrido un error,verifique la informacion')
+          }
+          return response.json()
+        })
         .then((response) => {
           console.log(response)
           setLoading(false)
@@ -79,12 +84,13 @@ const CreateNewUser = () => {
 
     if (!newUserData.passwordUser.trim()) {
       errores.passwordUser = "*Este Campo es obligatorio*"
-    } else if (passwordValidation.test(newUserData.passwordUser.trim())) {
+    } else if (!passwordValidation.test(newUserData.passwordUser.trim())) {
       errores.passwordUser = "Ingrese entre 8 y 16 caracteres, minusculas, mayusculas y digitos"
     }
 
     if (newUserData.passwordUser !== confirmPasword) {
       errores.confirmPassword = "Las contraseñas no coinciden"
+      console.log("valido confirm");
     }
     if (!newUserData.countryUser) {
       errores.countryUser = "*Este campo es obligatorio*"
@@ -122,7 +128,7 @@ const CreateNewUser = () => {
               </div>
               <div className="mb-2">
                 <label htmlFor="newUserPasswordConfirm" className="form-label">Confirmar Contraseña</label>
-                <input type="password" onChange={event => setConfirmPasword(event.target.value)} className="form-control" id="newUserPasswordConfirm" />
+                <input type="password" onChange={event => setConfirmPasword(event.target.value)} onBlur={handleBlur} className="form-control" id="newUserPasswordConfirm" />
                 {errors.confirmPassword ? <p className='text-danger m-0'>{errors.confirmPassword}</p> : null}
               </div>
               <div className="mb-2">
