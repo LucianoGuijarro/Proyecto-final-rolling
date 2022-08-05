@@ -42,7 +42,12 @@ const CreateNewUser = () => {
           'Content-type': 'application/json; charset=UTF-8'
         }
       })
-        .then(response => response.json())
+        .then(response => {
+          if(response.status !== 201){
+            alert('Ha ocurrido un error,verifique la informacion')
+          }
+          return response.json()
+        })
         .then((response) => {
           console.log(response)
           setLoading(false)
