@@ -10,7 +10,7 @@ function Navbar()  {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
-                        <Link className={`${styles.text} nav-link active text`} aria-current="page" to='/home'>TIENDA</Link>
+                        <Link className={`${styles.text} nav-link active text`} aria-current="page" to='/'>INICIO</Link>
                     </li>
                     <li className="nav-item">
                     <Link className={`${styles.text} nav-link active text`} aria-current="page" to='/'>COMUNIDAD</Link>

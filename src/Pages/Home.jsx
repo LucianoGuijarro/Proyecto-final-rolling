@@ -1,14 +1,16 @@
 import React from 'react';
-import Carousel from '../components/carousel/Carousel';
-import Seccion from '../Components/seccion1/Seccion';
+import Carousel from '../Components/carousel/carousel';
+import GridCategorias from '../Components/GridCategorias/GridCategorias';
+// import Seccion from '../Components/seccion1/Seccion';
 
 
 function Home() {
     return (
-        <BrowserRouter>
-        <Carousel/>
-        <Seccion />
-        </BrowserRouter>
+        <>
+            <Carousel />
+            {/* <Seccion /> */}
+            <GridCategorias />
+        </>
     )
 }
 

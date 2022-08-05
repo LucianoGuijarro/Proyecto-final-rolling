@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 // import components
-import App from './App';
+// import App from './App';
 // import pages
 import {
   BrowserRouter,
@@ -19,13 +19,18 @@ import AgregarCategoria from './Components/AgregarCategoria/AgregarCategoria';
 import CreateNewUserPage from './Pages/CreateNewUserPage.jsx'
 import LoginPage from './Pages/LoginPage.jsx';
 import VerCategorias from './Components/VerCategorias/VerCategorias';
+// import Grid from './Components/Grid/Grid';
+import Navbar from './Components/Navbar/Navbar';
+import Footer from './Components/Footer/Footer';
+import Home from './Pages/Home';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <Navbar />
     <Routes>
-      <Route path='/' element={<App />} />
+      <Route path='/' element={<Home />} />
       <Route path='/CreateNewUser' element={ <CreateNewUserPage /> } />
       <Route path='/Login' element={ <LoginPage /> } />
       <Route path='/categoria/:categoria' element={<VerTodos />} />
@@ -36,6 +41,7 @@ root.render(
       <Route path='/agregarCategoria' element={<AgregarCategoria />}/>
       <Route path='/verCategorias' element={<VerCategorias />}/>
     </Routes>
+    <Footer />
     </BrowserRouter>
   </React.StrictMode>
 );

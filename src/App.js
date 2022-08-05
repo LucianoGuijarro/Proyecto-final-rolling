@@ -3,7 +3,7 @@ import './App.css';
 // import GridJuegosAventura from './Components/GridJuegosAventura/GridJuegosAventura';
 // import GridJuegosCarreras from './Components/GridJuegosCarreras/GridJuegosCarreras';
 // import Grid from './Components/Grid/Grid';
-import GridCategorias from './Components/GridCategorias/GridCategorias';
+// import GridCategorias from './Components/GridCategorias/GridCategorias';
 
 
 function App() {
@@ -12,7 +12,6 @@ function App() {
     <>
 
     {/* {categorias.map(categoria => <Grid categoria={categoria} />)} */}
-    <GridCategorias />
 
     </>
   );
