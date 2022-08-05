@@ -1,5 +1,5 @@
 import React from 'react'
-import CreateNewUser from '../CreateNewUser/CreateNewUser';
+import CreateNewUser from '../Components/CreateNewUser/CreateNewUser';
 
 const CreateNewUserPage = () => {
   return (

@@ -15,9 +15,6 @@
     border: none;
     background: none;
 }
-.boton:hover {
-    scale: 0.3;
-}
 
 .card:hover{
     opacity: .7;
