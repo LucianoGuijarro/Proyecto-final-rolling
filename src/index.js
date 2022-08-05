@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom/client';
 // import components
 import App from './App';
 // import pages
-import CreateNewUserPage from './Components/Pages/CreateNewUserPage'
-import LoginPage from './Components/Pages/LoginPage';
 import {
   BrowserRouter,
   Routes,
@@ -18,6 +16,9 @@ import PaginaAdmin from './Pages/PaginaAdmin/PaginaAdmin';
 import AgregarJuego from './Components/AgregarJuego/AgregarJuego';
 import VerTodosJuegos from './Components/VerTodosJuegos/VerTodosJuegos';
 import AgregarCategoria from './Components/AgregarCategoria/AgregarCategoria';
+import CreateNewUserPage from './Pages/CreateNewUserPage.jsx'
+import LoginPage from './Pages/LoginPage.jsx';
+import VerCategorias from './Components/VerCategorias/VerCategorias';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -33,6 +34,7 @@ root.render(
       <Route path='/agregarJuego' element={<AgregarJuego />}/>
       <Route path='/verJuegos' element={<VerTodosJuegos />}/>
       <Route path='/agregarCategoria' element={<AgregarCategoria />}/>
+      <Route path='/verCategorias' element={<VerCategorias />}/>
     </Routes>
     </BrowserRouter>
   </React.StrictMode>

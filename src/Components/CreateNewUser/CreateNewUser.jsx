@@ -5,18 +5,18 @@ import './CreateNewUser.css';
 
 const CreateNewUser = () => {
   const [newUserData, setNewUserData] = useState({
-    "correoUser": "",
-    "nickNameUser": "",
-    "passwordUser": "",
-    "countryUser": ""
+    correoUser: "",
+    nickNameUser: "",
+    passwordUser: "",
+    countryUser: ""
   })
   const [confirmPasword, setConfirmPasword] = useState("")
   const [errors, setErrors] = useState({
-    "correoUser": "*Este campo es obligatorio*",
-    "nickNameUser": "*Este campo es obligatorio*",
-    "passwordUser": "*Este campo es obligatorio*",
-    "confirmPassword": "Las contraseñas deben ser iguales",
-    "countryUser": "*Este campo es obligatorio*"
+    correoUser: "*Este campo es obligatorio*",
+    nickNameUser: "*Este campo es obligatorio*",
+    passwordUser: "*Este campo es obligatorio*",
+    confirmPassword: "Las contraseñas deben ser iguales",
+    countryUser: "*Este campo es obligatorio*"
   })
   const [loading, setLoading] = useState(false)
   const [userCreated, setUserCreated] = useState(false)
@@ -32,6 +32,7 @@ const CreateNewUser = () => {
   // metodo post
   const handleSubmit = async (e) => {
     e.preventDefault()
+    const validacionContraseña = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
 
     if (Object.keys(errors).length === 0) {
       setLoading(true)
@@ -122,12 +123,12 @@ const CreateNewUser = () => {
               </div>
               <div className="mb-2">
                 <label htmlFor="newUserInputPassword" className="form-label">Contraseña</label>
-                <input type="text" onChange={handleChange} onBlur={handleBlur} name='passwordUser' className="form-control" id="newUserInputPassword" />
+                <input type="password" onChange={handleChange} onBlur={handleBlur} name='passwordUser' className="form-control" id="newUserInputPassword" />
                 {errors.passwordUser ? <p className='text-danger py-0'>{errors.passwordUser}</p> : null}
               </div>
               <div className="mb-2">
                 <label htmlFor="newUserPasswordConfirm" className="form-label">Confirmar Contraseña</label>
-                <input type="text" onChange={event => setConfirmPasword(event.target.value)} onBlur={handleBlur} className="form-control" id="newUserPasswordConfirm" />
+                <input type="password" onChange={event => setConfirmPasword(event.target.value)} onBlur={handleBlur} className="form-control" id="newUserPasswordConfirm" />
                 {errors.confirmPassword ? <p className='text-danger m-0'>{errors.confirmPassword}</p> : null}
               </div>
               <div className="mb-2">
@@ -148,4 +149,4 @@ const CreateNewUser = () => {
   )
 }
 
-export default CreateNewUser
+export default CreateNewUser;
