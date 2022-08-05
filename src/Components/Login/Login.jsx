@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom';
-import './Login.css';
+import styles from './Login.module.css';
 
 const Login = () => {
   const [userInit, setUserInit] = useState({
@@ -8,8 +8,6 @@ const Login = () => {
     "passwordUser": ""
   })
   const [isLoged, setIsLoged] = useState(false)
-  // const [userData, setUserData] = useState([])
-  // const [isLoading, setIsLoading] = useState(false)
 
   // hacer un post y la logica de logue se hace en el back
   const handleSubmit = async (e) => {
@@ -46,7 +44,7 @@ const Login = () => {
 
 
   return (
-    <div className="container col-6 form-styles p-4 mt-5 align-items-center">
+    <div className={`container ${styles.form-styles} col-6  p-4 mt-5 align-items-center`}>
       <h5 className="py-3 ">INICIAR SESION</h5>
       <form onSubmit={handleSubmit}>
         <div className="mb-2">
@@ -59,7 +57,7 @@ const Login = () => {
           <input type="password" onChange={handleChange} name='passwordUser' className="form-control" id="passwordUser" />
         </div>
         {isLoged ? <Navigate to={"/"} /> : false }
-        <button type="submit" className="btn btn-iniciar-sesion container-fluid mt-3">Iniciar Sesion</button>
+        <button type="submit" className={`btn ${'btn-iniciar-sesion'} container-fluid mt-3`}>Iniciar Sesion</button>
       </form>
     </div>
   )
