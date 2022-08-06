@@ -1,8 +1,10 @@
-import Header from "./components/Carrito/Header/Header";
+
 import { useState } from "react";
-import Main from "./components/Carrito/Main/Main";
-import data from "./data";
-import Basket from "./components/Carrito/Basket/Basket";
+import Header from "./components/Carrito/Header";
+import Main from "./components/Carrito/Main";
+import Basket from "./components/Carrito/Basket";
+import data from './data'
+
 
 function App() {
   const { products } = data;

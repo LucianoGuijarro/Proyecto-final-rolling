@@ -1,5 +1,5 @@
 import React from 'react';
-import Product from '../Producto/Product';
+import Product from './Product';
 
 export default function Main(props) {
   const { products, onAdd } = props;
