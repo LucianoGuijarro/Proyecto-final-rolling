@@ -15,7 +15,9 @@ nav {
 .text {
     color:aliceblue;
 }
-
+.text:hover{
+    color: var(--main-blue);
+}
 .img {
     height: 50px;
 }

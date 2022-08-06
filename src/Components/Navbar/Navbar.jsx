@@ -1,8 +1,18 @@
-import React from 'react';
+import React, {  } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css';
 
 function Navbar() {
+  // const [nickNameStorage, setNickNameStorage] = useState()
+  // const any = localStorage.getItem('nickName')
+  // setNickNameStorage(localStorage.getItem('nickName'))
+ 
+  // setNickNameStorage(any)
+  // console.log(any);
+  // console.log(nickNameStorage);
+
+  // console.log(localStorage.getItem("nickName"))
+
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
@@ -38,18 +48,45 @@ function Navbar() {
             {/* <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
               className="bi bi-cart3" viewBox="0 0 16 16">
               <path
-                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                d="M0 1.5A.5
+                .5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
             </svg> */}
-            <li className="nav-item">
-              <button type="button" class={`btn px-1 py-1 ${styles.butonIniciar} me-2`}>
-                <Link className={`${styles.text} nav-link active text-white`} aria-current="page" to='/login'>Iniciar Sesion</Link>
-              </button>
-            </li>
-            <li className="nav-item">
-            <button type="button" class={`btn px-1 py-1  ${styles.buton}`}>
-              <Link className={`${styles.text} nav-link active text-white`} aria-current="page" to='/createNewUser'>Registrate</Link>
-              </button>
-            </li>
+            {
+              localStorage.getItem("nickName") != null
+              // nickNameStorage == null
+                ?
+                <>
+                  <li className="nav-item">
+                    <div className="btn-group" role="group">
+                      <button id="btnGroupDrop1" type="button" className="btn dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false">
+                      User: {localStorage.getItem("nickName")}
+                      </button>
+                      <ul className={`dropdown-menu ${styles.bgColorDropdown}`} aria-labelledby="btnGroupDrop1">
+                        {/* <li><button className={`{styles.text} dropdown-item text-white`} href="/">Perfil</button></li> */}
+                        <li><button className={`{styles.text} dropdown-item text-white`} onClick={ () => localStorage.clear() } href="/">Cerrar sesion</button></li>
+                        {/* <li><a className={`{styles.text} dropdown-item text-white`} href="/">Dropdown link</a></li> */}
+                      </ul>
+                    </div>
+                    {/* <button type="button" className={`btn px-1 py-1  me-2`}>
+                    
+                      <Link className={`${styles.text} nav-link active text-white`} aria-current="page" to='/login'>User: {localStorage.getItem("nickName")}</Link>
+                    </button> */}
+                  </li>
+                </>
+                :
+                <>
+                  <li className="nav-item">
+                    <button type="button" className={`btn px-1 py-1 ${styles.butonIniciar} me-2`}>
+                      <Link className={`${styles.text} nav-link active text-white`} aria-current="page" to='/login'>Iniciar Sesion</Link>
+                    </button>
+                  </li>
+                  <li className="nav-item">
+                    <button type="button" className={`btn px-1 py-1  ${styles.buton}`}>
+                      <Link className={`${styles.text} nav-link active text-white`} aria-current="page" to='/createNewUser'>Registrate</Link>
+                    </button>
+                  </li>
+                </>
+            }
 
           </ul>
         </div>

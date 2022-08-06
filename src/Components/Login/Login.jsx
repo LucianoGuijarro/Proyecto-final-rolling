@@ -8,7 +8,7 @@ const Login = () => {
     "passwordUser": ""
   })
   const [isLoged, setIsLoged] = useState(false)
-
+  // const [nickName, setNickName] = useState()
   // hacer un post y la logica de logue se hace en el back
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -23,13 +23,17 @@ const Login = () => {
       if(response.status !== 200){
         return alert('Ha ocurrido un error, verifique la informacion')
       }
+      // console.log(response)
       return response.json()
     })
     .then(response =>{
       e.target.reset()
+      // setNickName(response.nickName)
       setIsLoged(true)
-      alert("Usuario Logueado")
-      console.log(response)
+      localStorage.setItem("token",`${response.token}`)
+      localStorage.setItem("nickName",`${response.nickName}`)
+      alert(`Bienvenido/a ${ response.nickName}`)
+      console.log(response);
     } )
   }
 
@@ -38,7 +42,6 @@ const Login = () => {
       ...userInit,
       [target.name]: target.value
     })
-    // console.log(target.value);
   }
 
 
