@@ -6,7 +6,7 @@ const Buscador = () => {
 
   }
 
-  
+
   return (
     <div className={`mb-3 container mt-4 d-flex col-6 `}>
       <input type="text" className="form-control col-2" placeholder="Buscar Juego" aria-label="Recipient's username" aria-describedby="basic-addon2" />
