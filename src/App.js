@@ -1,10 +1,8 @@
-import Header from './components/Carrito/Header/Header';
-import { useState } from 'react';
-import Main from './components/Carrito/Main/Main';
-import data from './data'
-import Basket from './components/Carrito/Basket/Basket';
-
-
+import Header from "./components/Carrito/Header/Header";
+import { useState } from "react";
+import Main from "./components/Carrito/Main/Main";
+import data from "./data";
+import Basket from "./components/Carrito/Basket/Basket";
 
 function App() {
   const { products } = data;
@@ -34,9 +32,9 @@ function App() {
     }
   };
   return (
-    <div className="App container-fluid">
+    <div>
       <Header countCartItems={cartItems.length}></Header>
-      <div className="container-fluid">
+      <div>
         <Basket
           cartItems={cartItems}
           onAdd={onAdd}

@@ -1,22 +1,17 @@
-import React from 'react';
+import React from "react";
 
 export default function Header(props) {
   return (
-    <header className="container-fluid text-center">
-      <div>
-        <a href="#/">
-          <h1>Carrito re piola</h1>
-        </a>
-      </div>
+    <header className="container-fluid m-5">
       <div>
         <a href="#/cart">
-          Carrito{' '}
+          Carrito{" "}
           {props.countCartItems ? (
             <button className="badge">{props.countCartItems}</button>
           ) : (
-            ''
+            ""
           )}
-        </a>{' '}
+        </a>{" "}
         <a href="#/signin"> Registrarse</a>
       </div>
     </header>

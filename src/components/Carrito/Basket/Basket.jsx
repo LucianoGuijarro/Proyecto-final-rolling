@@ -4,9 +4,11 @@ export default function Basket(props) {
   const { cartItems, onAdd, onRemove } = props;
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
   const taxPrice = itemsPrice * 0.5;
+  
   // Envio gratis a partir de $10000
   const shippingPrice = itemsPrice > 10000 ? 0 : 2500;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
+  
   return (
     <div className="block">
       <h2 className="h2 text-center my-5">Tu Carrito</h2>
