@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 // import clientAxios from "../../Config/clientAxios";
 import styles from "../Buscador/Buscador.module.css";
+import { Link } from 'react-router-dom';
 
 const Buscador = () => {
   const [search, setSearch] = useState(""); //guardo el text que busco
@@ -12,35 +13,18 @@ const Buscador = () => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((response) => {
-        setJuegos(response);
         filterNames(search);
+        setJuegos(response);
         // console.log(response);
       })
       .catch((error) => console.log(error));
     // await clientAxios.get('/juegos/verJuegos')
   };
 
-  // const [count, setCount] = useState(0)
-  // juegos.map(juego => {
-  //   setCount(count + 1)
-  //   if(!juego.name){
-  //     console.log("no hay resultados");
-  //   }
-  //   if(count >= 10){
-  //     return console.log("tiene mas de 10 opciones");
-  //   }
-  // return console.log(juego)
-
-  // })
-  // if(resultsSerch){
-  //   console.log("result tiene");
-  //   console.log(resultsSerch);
-  // }
-
-  if (resultsSerch.length === 0) {
+  if (resultsSerch.length <= 1) {
     console.log("resultsSerch esta vacio");
   }
-  // resultsSerch === "" ? console.log(resultsSerch) : console.log("ta vacio");
+
   const filterNames = (juegoToSearch) => {
     let resultadoBusqueda = juegos.filter((elemento) => {
       if (
@@ -51,16 +35,18 @@ const Buscador = () => {
       ) {
         return elemento;
       }
-      return null
-    })
-    console.log(resultadoBusqueda);
+      return null;
+    });
     setResultsSerch(resultadoBusqueda);
+    // console.log(resultadoBusqueda);
   };
+
   const handleSubmit = (e) => {
     alert(`Buscando Resultados para ${search}`);
     console.log(e);
   };
 
+  const captureInfo = (e) => {};
   return (
     <div className={`mb-3 container mt-4 d-flex col-6 dropdown `}>
       <input
@@ -76,14 +62,18 @@ const Buscador = () => {
       />
       <ul className="dropdown-menu container">
         <li>
-          {resultsSerch.length === 0 ? (
-            <p className={`${styles.sinResultados} text-uppercase fw-bold my-0`}>Sin resultados</p>
+          {resultsSerch.length <= 1 ? (
+            <p
+              className={`${styles.sinResultados} text-uppercase fw-bold my-0`}            
+            >
+              Sin resultados
+            </p>
           ) : (
             resultsSerch.map((juego) => {
               return (
-                <a className="dropdown-item" href="/">
+                <Link className="dropdown-item" to={'/'} onClick={captureInfo} key={juego.id}>
                   {juego.name}
-                </a>
+                </Link>
               );
             })
           )}
