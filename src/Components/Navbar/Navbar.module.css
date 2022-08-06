@@ -1,3 +1,11 @@
+:root {
+    --main-black: rgb(44, 51, 51);
+    --main-blue: rgb(57, 91, 100);
+    --main-light-blue: rgb(165, 201, 202);
+    --main-white: rgb(165, 201, 202);
+}
+
+
 nav {
     background: #2C3333;
     padding: 100px;
@@ -7,6 +15,29 @@ nav {
 .text {
     color:aliceblue;
 }
+
 .img {
     height: 50px;
+}
+
+.bgColorDropdown{
+    background-color: var(--main-blue);
+}
+.butonIniciar{
+    border: solid var(--main-white);
+
+}
+.butonIniciar:hover{
+
+    border: solid var(--main-light-blue);
+    background-color: var(--main-white);
+}
+
+.buton{
+    border: solid white;
+    background-color: var(--main-blue);
+}
+
+.buton:hover{
+    border: solid white;
 }
