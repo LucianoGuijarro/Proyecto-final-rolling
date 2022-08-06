@@ -5,3 +5,7 @@
 .contenedor{
     flex-wrap: wrap;
 }
+.boton{
+    width: 20%;
+    height: 20%;
+}
