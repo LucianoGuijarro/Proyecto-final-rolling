@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 // import css
 import styles from '../CreateNewUser/CreateNewUser.module.css';
+import Swal from 'sweetalert2';
+import clientAxios from '../../Config/clientAxios';
 
 const CreateNewUser = () => {
+  const navigate = useNavigate();
   const [newUserData, setNewUserData] = useState({
     correoUser: "",
     nickNameUser: "",
@@ -35,29 +38,58 @@ const CreateNewUser = () => {
     // const validacionContraseña = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
 
     if (Object.keys(errors).length === 0) {
-      setLoading(true)
-      fetch('http://localhost:8080/users', {
-        method: 'POST',
-        body: JSON.stringify(newUserData),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8'
-        }
-      })
+      // setLoading(true)
+      // fetch('http://localhost:8080/users', {
+      //   method: 'POST',
+      //   body: JSON.stringify(newUserData),
+      //   headers: {
+      //     'Content-type': 'application/json; charset=UTF-8'
+      //   }
+      // })
+      clientAxios.post('/users/agregarUsuario', newUserData)
         .then(response => {
-          if(response.status !== 201){
-            return alert('Ha ocurrido un error,verifique la informacion')
+          if (response.status === 201) {
+            Swal.fire({
+              icon: 'success',
+              title: 'Usuario creado con exito',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            setUserCreated(true)
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Este mail ya esta en uso',
+            })
+            navigate('./CreateNewUser.jsx')
           }
-          return response.json()
+        }).catch(error => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ha ocurrido un error y el usuario no se creo correcamente',
+          })
         })
-        .then((response) => {
-          console.log(response)
-          setLoading(false)
-          e.target.reset()
-          alert(response)
-          setUserCreated(true)
-          //aca deberia llevarte a la ruta de Login
-        })
-        .catch(error => console.log(error))
+        e.target.reset()
+        // .then(response => {
+        //   if (response.status === 201) {
+
+
+        //     e.target.reset()
+
+        //   }
+        //   response.json()
+        // })
+        // .then((response) => {
+        //   return alert('Ha ocurrido un error,verifique la informacion')
+
+
+
+
+        //   //aca deberia llevarte a la ruta de Login
+        // })
+        // .catch(error => console.log(error))
     } else alert("Hay campos incompletos")
   }
 
@@ -140,7 +172,7 @@ const CreateNewUser = () => {
                 <input type="checkbox" className="form-check-input" id="checkConditions" />
                 <label className="form-check-label" htmlFor="checkConditions">Confirmo que tengo 13 años o mas y acepto los terminos y condiciones</label>
               </div>
-              {userCreated ?  <Navigate to="/Login" /> : null}
+              {userCreated ? <Navigate to="/Login" /> : null}
               <button type="submit" className={`${styles.btnCreateAcount} btn  container-fluid`}>Crear Cuenta</button>
             </form>
           </div>

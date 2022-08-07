@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import clientAxios from '../../Config/clientAxios';
 import Swal from 'sweetalert2';
+import styles from './AgregarCategoria.module.css';
 
 const AgregarCategoria = () => {
     const [categoriaNueva, setCategoriaNueva] = useState({
@@ -46,7 +47,7 @@ const AgregarCategoria = () => {
                 <form className='d-flex justify-content-center' onSubmit={handleForm}>
                     <div className='my-4'>
                         <label className='text-light' htmlFor="nombre">Nombre</label>
-                        <input maxLength={20} className={`ms-3`} type="text" id='nombre' onChange={handleChange} name='nombre' placeholder='Ej: Accion' required />
+                        <input maxLength={20} className={`${styles.inputJuego} ms-3`} type="text" id='nombre' onChange={handleChange} name='nombre' placeholder='Ej: Accion' required />
                     </div>
                 </form>
             </div>

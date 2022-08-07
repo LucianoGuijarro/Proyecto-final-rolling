@@ -14,7 +14,7 @@ const Grid = ({categoria}) => {
     <>
             <div className="container">
                 <div className={`row justify-content-around shadow rounded my-3 pb-3`}>
-                <p className='fs-1 text-center text-light'>{categoria}</p>
+                <p className='fs-1 text-center text-light text-uppercase'>{categoria}</p>
                     {
                         juego.map((juego) => {
                             return <Cards juego={juego} key={juego._id} />

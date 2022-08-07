@@ -14,7 +14,7 @@ const VerTodos = () => {
     return (
         <>
             <div className="container">
-                <p className='fs-1 text-center text-light'>Seccion de {categoria}</p>
+                <p className='fs-1 text-center text-light text-uppercase'>Seccion de {categoria}</p>
                 <div className={`row justify-content-around shadow rounded my-3 pb-3`}>
                     {
                         juegos.map((juego) => {
