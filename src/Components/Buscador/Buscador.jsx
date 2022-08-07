@@ -11,7 +11,7 @@ const Buscador = () => {
 
   const handleChange = async ({ target }) => {
     setSearch(target.value);
-    fetch("https://jsonplaceholder.typicode.com/users")
+    fetch(`${process.env.REACT_APP_URL_BASE}/verJuegos`)
       .then((response) => response.json())
       .then((response) => {
         filterNames(search);
@@ -30,7 +30,7 @@ const Buscador = () => {
   const filterNames = (juegoToSearch) => {
     let resultadoBusqueda = juegos.filter((elemento) => {
       if (
-        elemento.name
+        elemento.nombre
           .toString()
           .toLowerCase()
           .includes(juegoToSearch.toLowerCase())
