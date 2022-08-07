@@ -38,14 +38,14 @@ const Buscador = () => {
     // console.log(resultadoBusqueda);
   };
 
-  const handleSubmit = (e) => {
-    alert(`Buscando Resultados para ${search}`);
-    console.log(e);
-  };
+  // const handleSubmit = (e) => {
+  //   alert(`Buscando Resultados para ${search}`);
+  //   console.log(e);
+  // };
 
   const captureInfo = (e) => {};
   return (
-    <div className={`mb-3 container mt-4 d-flex col-6 dropdown `}>
+    <div className={`container dropdown`}>
       <input
         type="text"
         className="form-control col-2 dropdown-toggle"
@@ -81,13 +81,13 @@ const Buscador = () => {
           )}
         </li>
       </ul>
-      <button
+      {/* <button
         type="button"
         className={`${styles.buton} px-2 ms-4`}
         onClick={handleSubmit}
       >
         Buscar
-      </button>
+      </button> */}
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { } from 'react';
 import { Link } from 'react-router-dom';
+import Buscador from '../Buscador/Buscador'
 import styles from './Navbar.module.css';
 
 function Navbar({rol}) {
@@ -35,12 +36,13 @@ function Navbar({rol}) {
                 <li><Link className={`${styles.text} dropdown-item`} to='/categoria/aventura'>Aventura</Link></li>
                 <li><Link className={`${styles.text} dropdown-item`} to='/categoria/deportes'>Deportes</Link></li>
               </ul>
-            </li>
+            </li>          
             {
               rol === 'admin' ? <li><Link to={'/admin'} className={`${styles.text} nav-link active text-white`}>Admin</Link></li> : false
             }
           </ul>
-          <ul className="navbar-nav">
+          <ul className="navbar-nav d-flex justify-content-end align-items-center col-6">
+            <Buscador />
             {
               localStorage.getItem("nickName") != null
                 // nickNameStorage == null
