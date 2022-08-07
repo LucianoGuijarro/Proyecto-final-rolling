@@ -29,22 +29,22 @@ const JuegosDetallados = () => {
         </div>
         <div className={`row justify-content-center my-4`}>
           <h2 className='text-light text-center fw-bold my-5'>Trailer Oficial</h2>
-          <div className="col-6">
+          <div className="col-sm-12 col-md-6 d-flex justify-content-center">
             <iframe width="560" height="315" className='rounded' src={juego.trailer} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
           </div>
         </div>
       </div>
       <div className='container'>
         {
-          usuarioLogeado ? <form className={`row justify-content-center`}>
-            <div class="form-floating w-50">
-              <textarea class="form-control" id="comentario" name='comentario'></textarea>
-              <label htmlFor='comentario'>Escribe tu comentario aqui</label>
-            </div>
-            <button type='submit' className={`${styles.boton} btn btn-success`}>Enviar comentario</button>
-          </form>
-            :
-            false
+          usuarioLogeado ?         <form className={`row justify-content-center`}>
+          <div class="form-floating w-50">
+            <textarea class="form-control" id="comentario" name='comentario'></textarea>
+            <label htmlFor='comentario'>Escribe tu comentario aqui</label>
+          </div>
+          <button type='submit' className={`${styles.boton} btn btn-success`}>Enviar comentario</button>
+        </form>
+        :
+        false
         }
       </div>
     </>

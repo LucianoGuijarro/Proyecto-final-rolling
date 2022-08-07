@@ -46,7 +46,7 @@ const Cards = ({ juego }) => {
                     </div>
                 </Link>
                 {
-                    rolUsuario === 'admin' ? <div>
+                    rolUsuario === 'admin' ? <div className='col-sm-12 col d-flex justify-content-center'>
                         <button onClick={() => eliminarProducto()} className={`${styles.botonEliminar} me-4`}><TiDelete color="red" size={40} /></button>
                         <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" className={`${styles.botonEditar}`}><FiEdit color='white' size={28} /></button>
                         <div class="form-check form-switch m-2">
@@ -67,11 +67,11 @@ const Cards = ({ juego }) => {
                         <form class="modal-body">
                         <div className='my-4'>
                             <label htmlFor="precio">Precio</label>
-                            <input maxLength={5} className={` ${styles.inputJuego} ms-3`} type="number" id='precio' name='precio' required />
+                            <input maxLength={5} className={` ${styles.inputJuego} ms-3`} type="number" id='precio' name='precio'  />
                         </div>
                         <div className='my-4'>
                             <label htmlFor="portada">Portada</label>
-                            <input className={`${styles.inputJuego} ms-3`} type="text" id='portada' name='portada' required />
+                            <input className={`${styles.inputJuego} ms-3`} type="text" id='portada' name='portada'  />
                         </div>
                         <div className='my-4'>
                             <label htmlFor="trailer">Trailer</label>

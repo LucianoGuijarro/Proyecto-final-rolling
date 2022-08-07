@@ -25,11 +25,9 @@ import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
 import Home from './Pages/Home';
 import VerUsuarios from './Components/VerUsuarios/VerUsuarios';
-import EditarJuego from './Components/EditarJuego/EditarJuego';
 
 
 function App() {
-  const usuarioLogeado = localStorage.getItem('nickName');
   const rolUsuario = localStorage.getItem('rol');
   return (
     <>
@@ -47,7 +45,6 @@ function App() {
           <Route path='/agregarCategoria' element={<AgregarCategoria />} />
           <Route path='/verCategorias' element={<VerCategorias />} />
           <Route path='/verUsuarios' element={<VerUsuarios />} />
-          <Route path='/editarJuego' element={<EditarJuego />} />
         </Routes>
         <Footer />
       </BrowserRouter>
