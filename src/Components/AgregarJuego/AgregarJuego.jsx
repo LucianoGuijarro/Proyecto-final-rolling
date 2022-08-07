@@ -48,7 +48,6 @@ const AgregarJuego = () => {
         ...prevState,
         [name]: value
     }))
-    console.log(juegoNuevo)
     }
     return (
         <>

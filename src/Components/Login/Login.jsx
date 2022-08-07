@@ -12,7 +12,7 @@ const Login = () => {
   // hacer un post y la logica de logue se hace en el back
   const handleSubmit = async (e) => {
     e.preventDefault()
-    fetch('http://localhost:8080/login', {
+    fetch('https://nawen-games-backend.herokuapp.com/login', {
       method: 'POST',
       body: JSON.stringify(userInit),
       headers: {
@@ -32,8 +32,8 @@ const Login = () => {
       setIsLoged(true)
       localStorage.setItem("token",`${response.token}`)
       localStorage.setItem("nickName",`${response.nickName}`)
+      localStorage.setItem('rol', `${response.rol}`)
       alert(`Bienvenido/a ${ response.nickName}`)
-      console.log(response);
     } )
   }
 

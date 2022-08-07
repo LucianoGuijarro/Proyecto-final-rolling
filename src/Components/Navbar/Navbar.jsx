@@ -2,7 +2,7 @@ import React, { } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css';
 
-function Navbar() {
+function Navbar({rol}) {
   // const [nickNameStorage, setNickNameStorage] = useState()
   // const any = localStorage.getItem('nickName')
   // setNickNameStorage(localStorage.getItem('nickName'))
@@ -36,6 +36,9 @@ function Navbar() {
                 <li><Link className={`${styles.text} dropdown-item`} to='/categoria/deportes'>Deportes</Link></li>
               </ul>
             </li>
+            {
+              rol === 'admin' ? <li><Link to={'/admin'} className={`${styles.text} nav-link active text-white`}>Admin</Link></li> : false
+            }
           </ul>
           <ul className="navbar-nav me-auto">
             {

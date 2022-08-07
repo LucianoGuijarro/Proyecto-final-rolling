@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import { FiEdit } from "react-icons/fi";
 
 const Cards = ({ juego }) => {
+    const rolUsuario = localStorage.getItem('rol');
     const eliminarProducto = () => {
         if (window.confirm('Estas seguro de querer eliminar este juego?')) {
             clientAxios.delete(`/juegos/eliminarJuego/${juego._id}`)
@@ -44,12 +45,17 @@ const Cards = ({ juego }) => {
                         <button className={`${styles.boton} rounded-bottom w-100 opacity-75`}><TiShoppingCart size={35} color='white' /></button>
                     </div>
                 </Link>
-                <button onClick={() => eliminarProducto()} className={`${styles.botonEliminar} me-4`}><TiDelete color="red" size={40} /></button>
-                <button className={`${styles.botonEditar}`}><FiEdit color='white' size={28} /></button>
-                <div class="form-check form-switch m-2">
-                    <label className="form-check-label text-light" htmlFor="destacado">Destacado</label>
-                    <input className="form-check-input" type="checkbox" role="switch" id="destacado" name='destacado' />
-                </div>
+                {
+                    rolUsuario === 'admin' ? <div>
+                        <button onClick={() => eliminarProducto()} className={`${styles.botonEliminar} me-4`}><TiDelete color="red" size={40} /></button>
+                        <button className={`${styles.botonEditar}`}><FiEdit color='white' size={28} /></button>
+                        <div class="form-check form-switch m-2">
+                            <label className="form-check-label text-light" htmlFor="destacado">Destacado</label>
+                            <input className="form-check-input" type="checkbox" role="switch" id="destacado" name='destacado' />
+                        </div>
+                    </div>
+                    : false
+                }
             </div>
         </>
     )

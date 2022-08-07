@@ -4,7 +4,7 @@ import JuegosDetallados from '../../Components/JuegosDetallados/JuegosDetallados
 const PaginaDetalle = () => {
   return (
     <>
-    <JuegosDetallados />
+    <JuegosDetallados/>
     </>
   )
 }

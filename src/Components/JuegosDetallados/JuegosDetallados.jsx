@@ -4,6 +4,7 @@ import clientAxios from '../../Config/clientAxios';
 import styles from './JuegosDetallados.module.css';
 
 const JuegosDetallados = () => {
+  const usuarioLogeado = localStorage.getItem('token');
   const { id } = useParams();
   const [juego, setJuego] = useState([])
   useEffect(() => {
@@ -34,13 +35,17 @@ const JuegosDetallados = () => {
         </div>
       </div>
       <div className='container'>
-        <form className={`row justify-content-center`}>
-          <div class="form-floating w-50">
-            <textarea class="form-control" id="comentario" name='comentario'></textarea>
-            <label htmlFor='comentario'>Escribe tu comentario aqui</label>
-          </div>
-          <button type='submit' className={`${styles.boton} btn btn-success`}>Enviar comentario</button>
-        </form>
+        {
+          usuarioLogeado ? <form className={`row justify-content-center`}>
+            <div class="form-floating w-50">
+              <textarea class="form-control" id="comentario" name='comentario'></textarea>
+              <label htmlFor='comentario'>Escribe tu comentario aqui</label>
+            </div>
+            <button type='submit' className={`${styles.boton} btn btn-success`}>Enviar comentario</button>
+          </form>
+            :
+            false
+        }
       </div>
     </>
   )

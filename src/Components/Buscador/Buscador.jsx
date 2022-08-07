@@ -2,9 +2,9 @@ import React from 'react'
 import styles from '../Buscador/Buscador.module.css'
 
 const Buscador = () => {
-  const handleChange = () => {
+  // const handleChange = () => {
 
-  }
+  // }
 
 
   return (
