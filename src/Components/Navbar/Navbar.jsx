@@ -21,7 +21,7 @@ function Navbar({rol}) {
           <span class="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav  mb-2 mb-lg-0">
             <li className="nav-item">
               <Link className={`${styles.text} nav-link active text-white`} aria-current="page" to='/'>INICIO</Link>
             </li>
@@ -40,7 +40,7 @@ function Navbar({rol}) {
               rol === 'admin' ? <li><Link to={'/admin'} className={`${styles.text} nav-link active text-white`}>Admin</Link></li> : false
             }
           </ul>
-          <ul className="navbar-nav me-auto">
+          <ul className="navbar-nav">
             {
               localStorage.getItem("nickName") != null
                 // nickNameStorage == null
