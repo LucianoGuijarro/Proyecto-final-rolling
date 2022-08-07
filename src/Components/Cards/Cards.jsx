@@ -48,14 +48,42 @@ const Cards = ({ juego }) => {
                 {
                     rolUsuario === 'admin' ? <div>
                         <button onClick={() => eliminarProducto()} className={`${styles.botonEliminar} me-4`}><TiDelete color="red" size={40} /></button>
-                        <button className={`${styles.botonEditar}`}><FiEdit color='white' size={28} /></button>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" className={`${styles.botonEditar}`}><FiEdit color='white' size={28} /></button>
                         <div class="form-check form-switch m-2">
                             <label className="form-check-label text-light" htmlFor="destacado">Destacado</label>
                             <input className="form-check-input" type="checkbox" role="switch" id="destacado" name='destacado' />
                         </div>
                     </div>
-                    : false
+                        : false
                 }
+            </div>
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Editar Juego</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form class="modal-body">
+                        <div className='my-4'>
+                            <label htmlFor="precio">Precio</label>
+                            <input maxLength={5} className={` ${styles.inputJuego} ms-3`} type="number" id='precio' name='precio' required />
+                        </div>
+                        <div className='my-4'>
+                            <label htmlFor="portada">Portada</label>
+                            <input className={`${styles.inputJuego} ms-3`} type="text" id='portada' name='portada' required />
+                        </div>
+                        <div className='my-4'>
+                            <label htmlFor="trailer">Trailer</label>
+                            <input className={` ${styles.inputJuego} ms-3`} type="text" id='trailer' name='trailer' />
+                        </div>
+                        </form>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary">Guardar cambios</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     )

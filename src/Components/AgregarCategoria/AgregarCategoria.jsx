@@ -26,6 +26,7 @@ const AgregarCategoria = () => {
                     text: 'Ha ocurrido un error y no se pudo agregar la categoria',
                 })
             }
+            e.target.reset()
         }).catch(error => {
             Swal.fire({
                 icon: 'error',
@@ -44,11 +45,12 @@ const AgregarCategoria = () => {
     return (
         <>
             <div className="container">
-                <form className='d-flex justify-content-center' onSubmit={handleForm}>
+                <form className='d-flex  flex-column align-items-center' onSubmit={handleForm}>
                     <div className='my-4'>
                         <label className='text-light' htmlFor="nombre">Nombre</label>
                         <input maxLength={20} className={`${styles.inputJuego} ms-3`} type="text" id='nombre' onChange={handleChange} name='nombre' placeholder='Ej: Accion' required />
                     </div>
+                        <button type='submit' className='btn btn-success w-25'>Agregar Categoria</button>s
                 </form>
             </div>
         </>

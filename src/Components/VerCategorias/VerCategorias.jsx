@@ -11,9 +11,9 @@ const VerCategorias = () => {
         clientAxios.get('/categorias/verCategorias')
             .then(response => setCategorias(response.data))
     }, [])
-    const eliminarCategoria = () => {
+    const eliminarCategoria = (id) => {
         if (window.confirm('Seguro quieres eliminar esta categoria?')) {
-            clientAxios.delete(`/categorias/eliminarCategoria/${categorias._id}`)
+            clientAxios.delete(`/categorias/eliminarCategoria/${id}`)
                 .then(response => {
                     if (response.status !== 200) {
                         Swal.fire({
@@ -51,11 +51,11 @@ const VerCategorias = () => {
                     <tbody>
                         {
                             categorias.map((cat, i) => (
-                                <tr>
-                                    <td className='text-light'>{cat.nombre}</td>
+                                <tr key={i}>
+                                    <td className='text-light' >{cat.nombre}</td>
                                     <td>
                                         <button className={`${styles.boton}`}><FiEdit size={25} color={'white'} /></button>
-                                        <button className={`${styles.boton}`} onClick={() => eliminarCategoria()}><MdDeleteForever size={25} color={'white'} /></button>
+                                        <button className={`${styles.boton}`} onClick={() => eliminarCategoria(cat._id)}><MdDeleteForever size={25} color={'white'} /></button>
                                     </td>
                                 </tr>
                             ))

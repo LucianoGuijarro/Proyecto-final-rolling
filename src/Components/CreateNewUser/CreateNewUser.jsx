@@ -38,7 +38,7 @@ const CreateNewUser = () => {
     // const validacionContraseña = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
 
     if (Object.keys(errors).length === 0) {
-      // setLoading(true)
+      setLoading(true)
       // fetch('http://localhost:8080/users', {
       //   method: 'POST',
       //   body: JSON.stringify(newUserData),
@@ -56,6 +56,8 @@ const CreateNewUser = () => {
               timer: 1500
             })
             setUserCreated(true)
+            setLoading(false)
+            navigate('/login')
           } else {
             Swal.fire({
               icon: 'error',
@@ -145,27 +147,27 @@ const CreateNewUser = () => {
             <form onSubmit={handleSubmit}>
               <div className="mb-2">
                 <label htmlFor="NewUserInputEmail1" className="form-label">Correo electronico</label>
-                <input type="email" onChange={handleChange} onBlur={handleBlur} name='correoUser' className="form-control" id="NewUserInputEmail1" aria-describedby="emailHelp" />
+                <input type="email" maxLength={40} onChange={handleChange} onBlur={handleBlur} name='correoUser' className="form-control" id="NewUserInputEmail1" aria-describedby="emailHelp" />
                 {errors.correoUser ? <p className='text-danger m-0'>{errors.correoUser}</p> : null}
               </div>
               <div className="mb-2">
                 <label htmlFor="nickNameUser" className="form-label">Nick Name</label>
-                <input type="text" onChange={handleChange} onBlur={handleBlur} name='nickNameUser' className="form-control" id="nickNameUser" aria-describedby="nickNameUser" />
+                <input type="text" maxLength={20} onChange={handleChange} onBlur={handleBlur} name='nickNameUser' className="form-control" id="nickNameUser" aria-describedby="nickNameUser" />
                 {errors.nickNameUser ? <p className='text-danger m-0'>{errors.nickNameUser}</p> : null}
               </div>
               <div className="mb-2">
                 <label htmlFor="newUserInputPassword" className="form-label">Contraseña</label>
-                <input type="password" onChange={handleChange} onBlur={handleBlur} name='passwordUser' className="form-control" id="newUserInputPassword" />
+                <input type="password" maxLength={16} onChange={handleChange} onBlur={handleBlur} name='passwordUser' className="form-control" id="newUserInputPassword" />
                 {errors.passwordUser ? <p className='text-danger py-0'>{errors.passwordUser}</p> : null}
               </div>
               <div className="mb-2">
                 <label htmlFor="newUserPasswordConfirm" className="form-label">Confirmar Contraseña</label>
-                <input type="password" onChange={event => setConfirmPasword(event.target.value)} onBlur={handleBlur} className="form-control" id="newUserPasswordConfirm" />
+                <input type="password" maxLength={16} onChange={event => setConfirmPasword(event.target.value)} onBlur={handleBlur} className="form-control" id="newUserPasswordConfirm" />
                 {errors.confirmPassword ? <p className='text-danger m-0'>{errors.confirmPassword}</p> : null}
               </div>
               <div className="mb-2">
                 <label htmlFor="userCountry" className="form-label">Pais de residencia</label>
-                <input type="text" onChange={handleChange} onBlur={handleBlur} name='countryUser' className="form-control" id="userCountry" />
+                <input type="text" maxLength={20} onChange={handleChange} onBlur={handleBlur} name='countryUser' className="form-control" id="userCountry" />
                 {errors.countryUser ? <p className='text-danger m-0'>{errors.countryUser}</p> : null}
               </div>
               <div className="mb-2 form-check">

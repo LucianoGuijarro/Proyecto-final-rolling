@@ -21,7 +21,7 @@ const Login = () => {
     })
     .then(response=> {
       if(response.status !== 200){
-        return alert('Ha ocurrido un error, verifique la informacion')
+        return alert('El usuario o la contraseña ingresados no son correctos')
       }
       // console.log(response)
       return response.json()
@@ -36,16 +36,12 @@ const Login = () => {
       alert(`Bienvenido/a ${ response.nickName}`)
     } )
   }
-
   const handleChange = ({ target }) => {
     setUserInit({
       ...userInit,
       [target.name]: target.value
     })
   }
-
-
-
   return (
     <div className={`${styles.formStyles} container col-sm-12 col-md-6 col-lg-6  p-4 mt-5 align-items-center mb-5`}>
       <h5 className="py-3 ">INICIAR SESION</h5>
@@ -54,7 +50,6 @@ const Login = () => {
           <label htmlFor="correoUser" className="form-label">Correo electronico</label>
           <input type="email" onChange={handleChange} name='correoUser' className="form-control" id="emailUser" aria-describedby="emailHelp" />
         </div>
-
         <div className="mb-2">
           <label htmlFor="passwordUser" className="form-label">Contraseña</label>
           <input type="password" onChange={handleChange} name='passwordUser' className="form-control" id="passwordUser" />
