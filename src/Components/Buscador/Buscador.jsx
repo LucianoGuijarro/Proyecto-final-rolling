@@ -1,31 +1,26 @@
 import React, { useState } from "react";
-// import clientAxios from "../../Config/clientAxios";
+import clientAxios from "../../Config/clientAxios";
 import styles from "../Buscador/Buscador.module.css";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Buscador = () => {
-
   const [search, setSearch] = useState(""); //guardo el text que busco
   const [juegos, setJuegos] = useState([]); //almaceno todos los juegos de la base de datos
   const [resultsSerch, setResultsSerch] = useState([]); //almacenar los juegos filtrados
 
   const handleChange = async ({ target }) => {
-    setSearch(target.value);
-    fetch(`${process.env.REACT_APP_URL_BASE}/verJuegos`)
-      .then((response) => response.json())
-      .then((response) => {
-        filterNames(search);
-        setJuegos(response);
-        // console.log(response);
-      })
-      .catch((error) => console.log(error));
-    // await clientAxios.get('/juegos/verJuegos')
+    setSearch(target.value)
+    clientAxios.get("/juegos/verJuegos").then((response) => {
+      filterNames(search);
+      setJuegos(response.data);
+    });
   };
 
-  if (resultsSerch.length <= 1) {
-    console.log("resultsSerch esta vacio");
-  }
-
+  // if (resultsSerch.length <= 1) {
+  //   console.log("resultsSerch esta vacio");
+  // }else{
+  //   console.log("resultsSerch:" + resultsSerch.length)
+  // }
 
   const filterNames = (juegoToSearch) => {
     let resultadoBusqueda = juegos.filter((elemento) => {
@@ -54,7 +49,7 @@ const Buscador = () => {
       <input
         type="text"
         className="form-control col-2 dropdown-toggle"
-        value={search}
+        // value={search}
         placeholder="Buscar Juego"
         data-bs-toggle="dropdown"
         arial-expanded="false"
@@ -66,15 +61,20 @@ const Buscador = () => {
         <li>
           {resultsSerch.length <= 1 ? (
             <p
-              className={`${styles.sinResultados} text-uppercase fw-bold my-0`}            
+              className={`${styles.sinResultados} text-uppercase fw-bold my-0`}
             >
               Sin resultados
             </p>
           ) : (
             resultsSerch.map((juego) => {
               return (
-                <Link className="dropdown-item" to={'/'} onClick={captureInfo} key={juego.id}>
-                  {juego.name}
+                <Link
+                  className="dropdown-item"
+                  to={`verJuego/${juego._id}`}
+                  onClick={captureInfo}
+                  key={juego._id}
+                >
+                  {juego.nombre}
                 </Link>
               );
             })
