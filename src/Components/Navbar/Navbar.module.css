@@ -27,7 +27,7 @@ nav {
 }
 .butonIniciar{
     border: solid var(--main-white);
-
+    width: 8rem;
 }
 .butonIniciar:hover{
 
