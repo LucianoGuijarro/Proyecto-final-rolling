@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import clientAxios from "../../Config/clientAxios";
 import styles from "../Buscador/Buscador.module.css";
 import { Link } from "react-router-dom";
@@ -7,29 +7,38 @@ const Buscador = () => {
   const [search, setSearch] = useState(""); //guardo el text que busco
   const [juegos, setJuegos] = useState([]); //almaceno todos los juegos de la base de datos
   const [resultsSerch, setResultsSerch] = useState([]); //almacenar los juegos filtrados
-  
-  const handleChange = async ({ target }) => {
-    setSearch(target.value);
-    await clientAxios.get("/juegos/verJuegos").then((response) => {
-      filterNames(search);
+
+  useEffect(() => {
+    clientAxios.get("/juegos/verJuegos").then((response) => {
       setJuegos(response.data);
     });
-  };
+  }, []);
 
-  const filterNames = async (juegoToSearch) => {
-    await setResultsSerch(
-      juegos.filter((elemento) => {
-        if (
-          elemento.nombre
-            .toString()
-            .toLowerCase()
-            .includes(juegoToSearch.toLowerCase())
-        ) {
-          return elemento;
-        }
-        return null;
-      })
-    );
+  useEffect(() => {
+    const filterNames = (juegoToSearch) => {
+      if (search.length < 1) {
+        setResultsSerch([]);
+      } else {
+        setResultsSerch(
+          juegos.filter((elemento) => {
+            if (
+              elemento.nombre
+                .toString()
+                .toLowerCase()
+                .includes(juegoToSearch.toLowerCase())
+            ) {
+              return elemento;
+            }
+            return null;
+          })
+        );
+      }
+    };
+    filterNames(search);
+  }, [search, juegos]);
+
+  const handleChange = async ({ target }) => {
+    setSearch(target.value);
   };
 
   const captureInfo = (e) => {};
