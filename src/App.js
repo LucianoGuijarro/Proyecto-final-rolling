@@ -41,11 +41,11 @@ function App() {
           <Route path='/categoria/:categoria' element={<VerTodos />}/>
           <Route path='/verJuego/:id' element={< PaginaDetalle />}/>
           <Route path='/admin' element={ rolUsuario === 'admin' ? (<PaginaAdmin />) : <Navigate to={'/'} />} />
-          <Route path='/agregarJuego' element={<AgregarJuego />} />
-          <Route path='/verJuegos' element={<VerTodosJuegos />} />
-          <Route path='/agregarCategoria' element={<AgregarCategoria />} />
-          <Route path='/verCategorias' element={<VerCategorias />} />
-          <Route path='/verUsuarios' element={<VerUsuarios />} />
+          <Route path='/agregarJuego' element={ rolUsuario === 'admin' ? (<AgregarJuego />) : <Navigate to={'/'} /> } />
+          <Route path='/verJuegos' element={ rolUsuario === 'admin' ?  (<VerTodosJuegos />) : <Navigate to={'/'} /> } />
+          <Route path='/agregarCategoria' element={ rolUsuario === 'admin' ? (<AgregarCategoria />) : <Navigate to={'/'} /> } />
+          <Route path='/verCategorias' element={ rolUsuario === 'admin' ? (<VerCategorias />) : <Navigate to={'/'} /> } />
+          <Route path='/verUsuarios' element={ rolUsuario === 'admin' ? (<VerUsuarios />) : <Navigate to={'/'} />} />
         </Routes>
         <Footer />
       </BrowserRouter>
