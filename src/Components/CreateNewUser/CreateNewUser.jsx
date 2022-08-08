@@ -23,7 +23,7 @@ const CreateNewUser = () => {
   })
   const [loading, setLoading] = useState(false)
   const [userCreated, setUserCreated] = useState(false)
-  // const [response, setResponse] = useState(null)
+  const [disable, setDisable] = useState(true)
 
   const handleChange = ({ target }) => {
     setNewUserData({
@@ -171,11 +171,11 @@ const CreateNewUser = () => {
                 {errors.countryUser ? <p className='text-danger m-0'>{errors.countryUser}</p> : null}
               </div>
               <div className="mb-2 form-check">
-                <input type="checkbox" className="form-check-input" id="checkConditions" />
+                <input type="checkbox" className="form-check-input" id="checkConditions" onClick={()=>setDisable(!disable)}/>
                 <label className="form-check-label" htmlFor="checkConditions">Confirmo que tengo 13 años o mas y acepto los terminos y condiciones</label>
               </div>
               {userCreated ? <Navigate to="/Login" /> : null}
-              <button type="submit" className={`${styles.btnCreateAcount} btn  container-fluid`}>Crear Cuenta</button>
+              <button type="submit" className={`${styles.btnCreateAcount} btn  container-fluid`} disabled={disable}>Crear Cuenta</button>
             </form>
           </div>
       }

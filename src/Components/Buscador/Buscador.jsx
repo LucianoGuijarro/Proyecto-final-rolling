@@ -7,7 +7,7 @@ const Buscador = () => {
   const [search, setSearch] = useState(""); //guardo el text que busco
   const [juegos, setJuegos] = useState([]); //almaceno todos los juegos de la base de datos
   const [resultsSerch, setResultsSerch] = useState([]); //almacenar los juegos filtrados
-
+  
   const handleChange = async ({ target }) => {
     setSearch(target.value);
     clientAxios.get("/juegos/verJuegos").then((response) => {
