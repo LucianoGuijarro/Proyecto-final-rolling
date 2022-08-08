@@ -1,6 +1,18 @@
+:root {
+    --main-black: rgb(44, 51, 51);
+    --main-blue: rgb(57, 91, 100);
+    --main-light-blue: rgb(165, 201, 202);
+    --main-white: rgb(165, 201, 202);
+}
+
+
 .footer {
     background-color: #2C3333;
-    ;
+    /* position: absolute; */
+    /* bottom: 0; */
+    background-color: var(--main-blue);
+    position: absolute;
+    bottom: 0;
 }
 
 
@@ -9,4 +21,5 @@
 }
 .text {
     color:aliceblue;
+    text-decoration: none;
 }

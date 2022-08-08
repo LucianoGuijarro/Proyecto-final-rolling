@@ -1,5 +1,4 @@
 import React from 'react';
-import style from './Carousel.module.css';
 
 
 function Carousel() {

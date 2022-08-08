@@ -1,14 +1,15 @@
 import React from 'react';
-import Carousel from '../components/carousel/Carousel';
-import Seccion from '../Components/seccion1/Seccion';
+import { BrowserRouter } from "react-router-dom";
+import Carousel from '../Components/carousel/Carousel';
+
+
 
 
 function Home() {
     return (
         <BrowserRouter>
-        <Carousel/>
-        <Seccion />
-        </BrowserRouter>
+       <Carousel />
+       </BrowserRouter>
     )
 }
 
