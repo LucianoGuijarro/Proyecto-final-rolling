@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 // import components
 // import App from './App';
 // import pages
@@ -29,14 +29,15 @@ import VerUsuarios from './Components/VerUsuarios/VerUsuarios';
 
 function App() {
   const rolUsuario = localStorage.getItem('rol');
+  const [flag, setFlag] = useState(false)
   return (
     <>
       <BrowserRouter>
-        <Navbar rol={rolUsuario} />
+        <Navbar rol={rolUsuario} flag={flag} setFlag={setFlag}/>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/CreateNewUser' element={<CreateNewUserPage />} />
-          <Route path='/Login' element={<LoginPage />} />
+          <Route path='/Login' element={<LoginPage flag={flag} setFlag={setFlag}/>} />
           <Route path='/categoria/:categoria' element={<VerTodos />}/>
           <Route path='/verJuego/:id' element={< PaginaDetalle />}/>
           <Route path='/admin' element={ rolUsuario === 'admin' ? (<PaginaAdmin />) : <Navigate to={'/'} />} />

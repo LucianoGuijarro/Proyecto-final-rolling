@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Crads.module.css';
 import { Link } from 'react-router-dom';
 import { TiShoppingCart } from "react-icons/ti";
@@ -9,6 +9,46 @@ import { FiEdit } from "react-icons/fi";
 
 const Cards = ({ juego }) => {
     const rolUsuario = localStorage.getItem('rol');
+    const [infoEditada, setInfoEditada] = useState({
+        precio: juego.precio, portada: juego.portada, trailer: juego.trailer
+    });
+    const [destacado, setDestacado] = useState(juego.destacado)
+    const confirmarDestacado = () => {
+        setDestacado(!juego.destacado)
+        clientAxios.patch(`/juegos/editarJuego/${juego._id}`, {
+            destacado: destacado
+        })
+        .then(response => {
+            if (response.status === 200) {
+                alert('Juego editado correctamente')
+            } else {
+                alert('Ha ocurrido un error y no se pudo editar el juego')
+            }
+        }).catch( error => {
+            alert('Ha ocurrido un error y no se pudo editar el juego')
+        })
+    }
+    const handleForm = (e) => {
+        e.preventDefault();
+        clientAxios.patch(`/juegos/editarJuego/${juego._id}`, infoEditada)
+            .then(response => {
+                if (response.status === 200) {
+                    alert('Juego editado correctamente')
+                } else {
+                    alert('Ha ocurrido un error y no se pudo editar el juego')
+                }
+                e.target.reset();
+            }).catch( error => {
+                alert('Ha ocurrido un error y no se pudo editar el juego')
+            })
+    }
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setInfoEditada((prevState) => ({
+            ...prevState,
+            [name]: value
+        }))
+    }
     const eliminarProducto = () => {
         if (window.confirm('Estas seguro de querer eliminar este juego?')) {
             clientAxios.delete(`/juegos/eliminarJuego/${juego._id}`)
@@ -51,7 +91,7 @@ const Cards = ({ juego }) => {
                         <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" className={`${styles.botonEditar}`}><FiEdit color='white' size={28} /></button>
                         <div class="form-check form-switch m-2">
                             <label className="form-check-label text-light" htmlFor="destacado">Destacado</label>
-                            <input className="form-check-input" type="checkbox" role="switch" id="destacado" name='destacado' />
+                            <input className="form-check-input" type="checkbox" onClick={() => confirmarDestacado()} defaultChecked={destacado} role="switch" id="destacado" name='destacado' />
                         </div>
                     </div>
                         : false
@@ -64,24 +104,24 @@ const Cards = ({ juego }) => {
                             <h5 class="modal-title" id="staticBackdropLabel">Editar Juego</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form class="modal-body">
-                        <div className='my-4'>
-                            <label htmlFor="precio">Precio</label>
-                            <input maxLength={5} className={` ${styles.inputJuego} ms-3`} type="number" id='precio' name='precio'  />
-                        </div>
-                        <div className='my-4'>
-                            <label htmlFor="portada">Portada</label>
-                            <input className={`${styles.inputJuego} ms-3`} type="text" id='portada' name='portada'  />
-                        </div>
-                        <div className='my-4'>
-                            <label htmlFor="trailer">Trailer</label>
-                            <input className={` ${styles.inputJuego} ms-3`} type="text" id='trailer' name='trailer' />
-                        </div>
+                        <form class="modal-body" onSubmit={handleForm}>
+                            <div className='my-4'>
+                                <label htmlFor="precio">Precio</label>
+                                <input maxLength={5}  className={` ${styles.inputJuego} ms-3`} onChange={handleChange} type="number" id='precio' name='precio' />
+                            </div>
+                            <div className='my-4'>
+                                <label htmlFor="portada">Portada</label>
+                                <input className={`${styles.inputJuego} ms-3`}  type="text" onChange={handleChange} id='portada' name='portada' />
+                            </div>
+                            <div className='my-4'>
+                                <label htmlFor="trailer">Trailer</label>
+                                <input className={` ${styles.inputJuego} ms-3`}  type="text" onChange={handleChange} id='trailer' name='trailer' />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                            </div>
                         </form>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Guardar cambios</button>
-                        </div>
                     </div>
                 </div>
             </div>

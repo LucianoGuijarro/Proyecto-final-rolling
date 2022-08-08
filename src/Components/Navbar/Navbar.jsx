@@ -1,8 +1,12 @@
-import React, { } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css';
 
-function Navbar({rol}) {
+function Navbar({rol, flag, setFlag}) {
+  const eliminandoLocalStorage = () => {
+    localStorage.clear()
+    setFlag(!flag)
+  }
   // const [nickNameStorage, setNickNameStorage] = useState()
   // const any = localStorage.getItem('nickName')
   // setNickNameStorage(localStorage.getItem('nickName'))
@@ -53,7 +57,7 @@ function Navbar({rol}) {
                       </button>
                       <ul className={`dropdown-menu ${styles.bgColorDropdown}`} aria-labelledby="btnGroupDrop1">
                         {/* <li><button className={`{styles.text} dropdown-item text-white`} href="/">Perfil</button></li> */}
-                        <li><button className={`{styles.text} dropdown-item text-white`} onClick={() => localStorage.clear()} href="/">Cerrar sesion</button></li>
+                        <li><button className={`{styles.text} dropdown-item text-white`} onClick={() => eliminandoLocalStorage()} href="/">Cerrar sesion</button></li>
                         {/* <li><a className={`{styles.text} dropdown-item text-white`} href="/">Dropdown link</a></li> */}
                       </ul>
                     </div>
