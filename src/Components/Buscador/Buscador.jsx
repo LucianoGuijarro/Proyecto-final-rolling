@@ -16,32 +16,21 @@ const Buscador = () => {
     });
   };
 
-  // if (resultsSerch.length <= 1) {
-  //   console.log("resultsSerch esta vacio");
-  // }else{
-  //   console.log("resultsSerch:" + resultsSerch.length)
-  // }
-
   const filterNames = (juegoToSearch) => {
-    let resultadoBusqueda = juegos.filter((elemento) => {
-      if (
-        elemento.nombre
-          .toString()
-          .toLowerCase()
-          .includes(juegoToSearch.toLowerCase())
-      ) {
-        return elemento;
-      }
-      return null;
-    });
-    setResultsSerch(resultadoBusqueda);
-    // console.log(resultadoBusqueda);
+    setResultsSerch(
+      juegos.filter((elemento) => {
+        if (
+          elemento.nombre
+            .toString()
+            .toLowerCase()
+            .includes(juegoToSearch.toLowerCase())
+        ) {
+          return elemento;
+        }
+        return null;
+      })
+    );
   };
-
-  // const handleSubmit = (e) => {
-  //   alert(`Buscando Resultados para ${search}`);
-  //   console.log(e);
-  // };
 
   const captureInfo = (e) => {};
   return (
@@ -57,19 +46,10 @@ const Buscador = () => {
         aria-describedby="basic-addon2"
         onChange={handleChange}
       />
-      {/* <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="50"
-        height="100"
-        fill="currentColor"
-        class="bi bi-search"
-        viewBox="100 100 100 100"
-      >
-        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-      </svg> */}
+
       <ul className="dropdown-menu container">
         <li>
-          {resultsSerch.length <= 1 ? (
+          {resultsSerch.length <= 0 ? (
             <p
               className={`${styles.sinResultados} text-uppercase fw-bold my-0`}
             >
@@ -91,13 +71,6 @@ const Buscador = () => {
           )}
         </li>
       </ul>
-      {/* <button
-        type="button"
-        className={`${styles.buton} px-2 ms-4`}
-        onClick={handleSubmit}
-      >
-        Buscar
-      </button> */}
     </div>
   );
 };
