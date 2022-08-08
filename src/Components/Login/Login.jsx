@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom';
 import styles from '../Login/Login.module.css';
 
-const Login = () => {
+const Login = ({flag, setFlag}) => {
   const [userInit, setUserInit] = useState({
     "correoUser": "",
     "passwordUser": ""
@@ -30,6 +30,7 @@ const Login = () => {
       e.target.reset()
       // setNickName(response.nickName)
       setIsLoged(true)
+      setFlag(!flag)
       localStorage.setItem("token",`${response.token}`)
       localStorage.setItem("nickName",`${response.nickName}`)
       localStorage.setItem('rol', `${response.rol}`)

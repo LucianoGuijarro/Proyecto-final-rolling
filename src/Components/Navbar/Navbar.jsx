@@ -1,9 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styles from './Navbar.module.css';
 import Buscador from "../Buscador/Buscador";
-import styles from "./Navbar.module.css";
 
-function Navbar({ rol }) {
+function Navbar({ rol, flag, setFlag }) {
+  const eliminandoLocalStorage = () => {
+    localStorage.clear()
+    setFlag(!flag)
+  }
   // const [nickNameStorage, setNickNameStorage] = useState()
   // const any = localStorage.getItem('nickName')
   // setNickNameStorage(localStorage.getItem('nickName'))
@@ -114,13 +118,7 @@ function Navbar({ rol }) {
                     >
                       {/* <li><button className={`{styles.text} dropdown-item text-white`} href="/">Perfil</button></li> */}
                       <li>
-                        <button
-                          className={`{styles.text} dropdown-item text-white`}
-                          onClick={() => localStorage.clear()}
-                          href="/"
-                        >
-                          Cerrar sesion
-                        </button>
+                        <li><button className={`{styles.text} dropdown-item text-white`} onClick={() => eliminandoLocalStorage()} href="/">Cerrar sesion</button></li>
                       </li>
                       <li>
                         {" "}
@@ -177,11 +175,12 @@ function Navbar({ rol }) {
                   </button>
                 </li>
               </>
-            )}
-          </ul>
-        </div>
-      </div>
-    </nav>
+            )
+            }
+          </ul >
+        </div >
+      </div >
+    </nav >
   );
 }
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import Login from '../Components/Login/Login'
 
-const LoginPage = () => {
+const LoginPage = ({flag, setFlag}) => {
   return (
-    <Login />
+    <Login flag={flag} setFlag={setFlag} />
   )
 }
 
