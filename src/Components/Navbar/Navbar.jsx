@@ -1,13 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styles from './Navbar.module.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./Navbar.module.css";
 import Buscador from "../Buscador/Buscador";
 
 function Navbar({ rol, flag, setFlag }) {
   const eliminandoLocalStorage = () => {
-    localStorage.clear()
-    setFlag(!flag)
-  }
+    localStorage.clear();
+    setFlag(!flag);
+  };
   // const [nickNameStorage, setNickNameStorage] = useState()
   // const any = localStorage.getItem('nickName')
   // setNickNameStorage(localStorage.getItem('nickName'))
@@ -118,7 +118,15 @@ function Navbar({ rol, flag, setFlag }) {
                     >
                       {/* <li><button className={`{styles.text} dropdown-item text-white`} href="/">Perfil</button></li> */}
                       <li>
-                        <li><button className={`{styles.text} dropdown-item text-white`} onClick={() => eliminandoLocalStorage()} href="/">Cerrar sesion</button></li>
+                        <li>
+                          <Link
+                            className={`{styles.text} dropdown-item text-white`}
+                            onClick={() => eliminandoLocalStorage()}
+                            to={"/"}
+                          >
+                            Cerrar sesion
+                          </Link>
+                        </li>
                       </li>
                       <li>
                         {" "}
@@ -138,10 +146,6 @@ function Navbar({ rol, flag, setFlag }) {
                       {/* <li><a className={`{styles.text} dropdown-item text-white`} href="/">Dropdown link</a></li> */}
                     </ul>
                   </div>
-                  {/* <button type="button" className={`btn px-1 py-1  me-2`}>
-                    
-                      <Link className={`${styles.text} nav-link active text-white`} aria-current="page" to='/login'>User: {localStorage.getItem("nickName")}</Link>
-                    </button> */}
                 </li>
               </>
             ) : (
@@ -175,12 +179,11 @@ function Navbar({ rol, flag, setFlag }) {
                   </button>
                 </li>
               </>
-            )
-            }
-          </ul >
-        </div >
-      </div >
-    </nav >
+            )}
+          </ul>
+        </div>
+      </div>
+    </nav>
   );
 }
 

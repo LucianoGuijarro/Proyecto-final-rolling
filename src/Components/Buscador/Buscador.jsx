@@ -10,14 +10,14 @@ const Buscador = () => {
   
   const handleChange = async ({ target }) => {
     setSearch(target.value);
-    clientAxios.get("/juegos/verJuegos").then((response) => {
+    await clientAxios.get("/juegos/verJuegos").then((response) => {
       filterNames(search);
       setJuegos(response.data);
     });
   };
 
-  const filterNames = (juegoToSearch) => {
-    setResultsSerch(
+  const filterNames = async (juegoToSearch) => {
+    await setResultsSerch(
       juegos.filter((elemento) => {
         if (
           elemento.nombre
