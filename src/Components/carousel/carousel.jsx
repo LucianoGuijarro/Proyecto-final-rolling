@@ -1,8 +1,16 @@
-import React from 'react';
-// import style from './Carousel.module.css';
+import React, { useEffect, useState } from 'react';
+import clientAxios from '../../Config/clientAxios';
+import styles from './carousel.module.css'
 
 
 function Carousel() {
+    const [juegosDestacados, setJuegosDestacados] = useState([]);
+    useEffect(() => {
+        clientAxios.get('/juegos/verDestacados')
+            .then(response => {
+                setJuegosDestacados(response.data)
+            })
+    }, [])
     return (
         <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
             <div className="carousel-indicators">
@@ -12,17 +20,20 @@ function Carousel() {
                     aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                     aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                    aria-label="Slide 4"></button>
             </div>
             <div className="carousel-inner">
                 <div className="carousel-item active">
-                    <img src="./carrusel.jpg" className="d-block w-100" alt="Carousel1" />
-                </div> 
-                <div className="carousel-item">
-                    <img src="./original (1).jpg" className="d-block w-100" alt="Carousel2" />
+                    <img src="./carrusel.jpg" className={`${styles.imagen} d-block w-100`} alt="Carousel1" />
                 </div>
-                <div className="carousel-item">
-                    <img src="./original.jpg" className="d-block w-100" alt="Carousel3" />
-                </div>
+                {
+                    juegosDestacados.map((juego) => {
+                        return <div className="carousel-item ">
+                            <img src={juego.slider} className={`${styles.imagen} d-block w-100`} alt="Carousel1" />
+                        </div>
+                    })
+                }
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="prev">
