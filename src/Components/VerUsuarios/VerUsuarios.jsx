@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import clientAxios from '../../Config/clientAxios';
+import React, { useEffect, useState } from "react";
+import clientAxios from "../../Config/clientAxios";
 import { MdDeleteForever } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import styles from './VerUsuarios.module.css';

@@ -9,43 +9,32 @@ const Buscador = () => {
   const [resultsSerch, setResultsSerch] = useState([]); //almacenar los juegos filtrados
 
   const handleChange = async ({ target }) => {
-    setSearch(target.value)
+    setSearch(target.value);
     clientAxios.get("/juegos/verJuegos").then((response) => {
       filterNames(search);
       setJuegos(response.data);
     });
   };
 
-  // if (resultsSerch.length <= 1) {
-  //   console.log("resultsSerch esta vacio");
-  // }else{
-  //   console.log("resultsSerch:" + resultsSerch.length)
-  // }
-
   const filterNames = (juegoToSearch) => {
-    let resultadoBusqueda = juegos.filter((elemento) => {
-      if (
-        elemento.nombre
-          .toString()
-          .toLowerCase()
-          .includes(juegoToSearch.toLowerCase())
-      ) {
-        return elemento;
-      }
-      return null;
-    });
-    setResultsSerch(resultadoBusqueda);
-    // console.log(resultadoBusqueda);
-  };
-
-  const handleSubmit = (e) => {
-    alert(`Buscando Resultados para ${search}`);
-    console.log(e);
+    setResultsSerch(
+      juegos.filter((elemento) => {
+        if (
+          elemento.nombre
+            .toString()
+            .toLowerCase()
+            .includes(juegoToSearch.toLowerCase())
+        ) {
+          return elemento;
+        }
+        return null;
+      })
+    );
   };
 
   const captureInfo = (e) => {};
   return (
-    <div className={`mb-3 container mt-4 d-flex col-6 dropdown `}>
+    <div className={`container dropdown d-flex align-items-center`}>
       <input
         type="text"
         className="form-control col-2 dropdown-toggle"
@@ -57,9 +46,10 @@ const Buscador = () => {
         aria-describedby="basic-addon2"
         onChange={handleChange}
       />
+
       <ul className="dropdown-menu container">
         <li>
-          {resultsSerch.length <= 1 ? (
+          {resultsSerch.length <= 0 ? (
             <p
               className={`${styles.sinResultados} text-uppercase fw-bold my-0`}
             >
@@ -81,13 +71,6 @@ const Buscador = () => {
           )}
         </li>
       </ul>
-      <button
-        type="button"
-        className={`${styles.buton} px-2 ms-4`}
-        onClick={handleSubmit}
-      >
-        Buscar
-      </button>
     </div>
   );
 };
