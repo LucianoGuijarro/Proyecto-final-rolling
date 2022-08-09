@@ -10,15 +10,15 @@ function Footer() {
             <div className="container">
                 <div className="row">
                     <div className="col">
-                        <Link to='/' className={`${styles.text}`}> Politica de Privacidad </Link>
-                        <Link to='/' className={`${styles.text} d-flex`}> Informacion legal </Link>
-                        <Link to='/' className={`${styles.text} d-flex`}> Reembolsos </Link>
-                        <Link to='/' className={`${styles.text} d-flex`}> Acuerdo de Suscriptor a NawenGames </Link>
+                        <Link to='/PaginadeError' className={`${styles.text} d-flex`}> Politica de Privacidad </Link>
+                        <Link to='/PaginadeError' className={`${styles.text} d-flex`}> Informacion legal </Link>
+                        <Link to='/PaginadeError' className={`${styles.text} d-flex`}> Reembolsos </Link>
+                        <Link to='/PaginadeError' className={`${styles.text} d-flex`}> Acuerdo de Suscriptor a NawenGames </Link>
                     </div>
                     <div className="col">
-                        <Link to='/' className={`${styles.text} d-flex`}> Acerca de NawenGames </Link>
-                        <Link to='/' className={`${styles.text} d-flex`}> Soporte </Link>
-                        <Link to='/' className={`${styles.text} d-flex`}> Tarjeta de Regalo </Link>
+                        <Link to='/PaginadeError' className={`${styles.text} d-flex`}> Acerca de NawenGames </Link>
+                        <Link to='/PaginadeError' className={`${styles.text} d-flex`}> Soporte </Link>
+                        <Link to='/PaginadeError' className={`${styles.text} d-flex`}> Tarjeta de Regalo </Link>
                     </div>
                     <div className="col">
                         <img src="./logo2.png" className={`${styles.img}`} alt="Logo" />

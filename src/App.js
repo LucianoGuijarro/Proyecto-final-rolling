@@ -4,16 +4,18 @@ import Grid from './Components/Grid/Grid';
 import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
 import Home from './Pages/Home';
+import PaginadeError from './Pages/PaginadeError';
 
 
 function App() {
   return (
     <BrowserRouter>
-    <Navbar/> 
+    <Navbar /> 
    <Routes>
-     <Route path="/" element={<Home />}/>
+     <Route path="/Home" element={<Home />}/>
+     <Route  path="/Error404" element={<PaginadeError />}/>
    </Routes>
-   <Footer/>
+   <Footer />
    <Grid />
    </BrowserRouter>
     
