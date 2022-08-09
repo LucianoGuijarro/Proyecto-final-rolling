@@ -24,7 +24,7 @@ const JuegosDetallados = () => {
             <p className='fs-5 text-light'><strong className='fs-4 text-light'>Fecha de lanzamiento:</strong> {juego.fechaLanzamiento}</p>
             <p className='fs-5 text-light'><strong className='fs-4 text-light'>Categoria:</strong> {juego.categoria}</p>
             <p className='fs-5 text-light'><strong className='fs--4 text-light'>Precio:</strong> {`€${juego.precio}`}</p>
-            <Link to='*'><button className='btn btn-success'>Comprar Ahora</button></Link>
+            <Link to='/*'><button className='btn btn-success'>Comprar Ahora</button></Link>
           </div>
         </div>
         <div className={`row justify-content-center my-4`}>
