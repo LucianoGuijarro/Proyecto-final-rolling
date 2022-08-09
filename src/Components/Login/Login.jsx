@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom';
+import clientAxios from '../../Config/clientAxios';
 import styles from '../Login/Login.module.css';
 
-const Login = ({flag, setFlag}) => {
+const Login = ({ flag, setFlag }) => {
   const [userInit, setUserInit] = useState({
     "correoUser": "",
     "passwordUser": ""
@@ -10,28 +11,19 @@ const Login = ({flag, setFlag}) => {
   const [isLoged, setIsLoged] = useState(false)
   const handleSubmit = async (e) => {
     e.preventDefault()
-    fetch('https://nawen-games-backend.herokuapp.com/login', {
-      method: 'POST',
-      body: JSON.stringify(userInit),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8'
-      }
-    })
-    .then(response=> {
-      if(response.status !== 200){
-        return alert('El usuario o la contraseña ingresados no son correctos')
-      }
-      return response.json()
-    })
-    .then(response =>{
-      e.target.reset()
-      setIsLoged(true)
-      setFlag(!flag)
-      localStorage.setItem("token",`${response.token}`)
-      localStorage.setItem("nickName",`${response.nickName}`)
-      localStorage.setItem('rol', `${response.rol}`)
-      alert(`Bienvenido/a ${ response.nickName}`)
-    } )
+    clientAxios.post('login', userInit)
+      .then(response => {
+        if (response.status !== 200) {
+          return alert('El usuario o la contraseña ingresados no son correctos')
+        }
+        e.target.reset()
+        setIsLoged(true)
+        setFlag(!flag)
+        localStorage.setItem("token", `${response.data.token}`)
+        localStorage.setItem("nickName", `${response.data.nickName}`)
+        localStorage.setItem('rol', `${response.data.rol}`)
+        alert(`Bienvenido/a ${response.data.nickName}`)
+      })
   }
   const handleChange = ({ target }) => {
     setUserInit({
@@ -51,7 +43,7 @@ const Login = ({flag, setFlag}) => {
           <label htmlFor="passwordUser" className="form-label">Contraseña</label>
           <input type="password" onChange={handleChange} name='passwordUser' className="form-control" id="passwordUser" />
         </div>
-        {isLoged ? <Navigate to={"/"} /> : false }
+        {isLoged ? <Navigate to={"/"} /> : false}
         <button type="submit" className={`btn ${styles.btnIniciarSesion} container-fluid mt-3`}>Iniciar Sesion</button>
       </form>
     </div>

@@ -8,8 +8,6 @@
 
 .footer {
     background-color: #2C3333;
-    /* position: absolute; */
-    /* bottom: 0; */
     background-color: var(--main-blue);
 }
 

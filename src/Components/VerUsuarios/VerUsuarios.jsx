@@ -62,8 +62,8 @@ const VerUsuarios = () => {
                                 </td>
                                 <td>
                                     <div class="form-check form-switch m-2">
-                                        <label className="form-check-label text-light" htmlFor="destacado">Ban</label>
-                                        <input className="form-check-input" type="checkbox" role="switch" defaultValue={user.suspendido} id="destacado" name='destacado' />
+                                        <label className="form-check-label text-light" htmlFor="suspendido">Ban</label>
+                                        <input className="form-check-input" type="checkbox" role="switch" defaultValue={user.suspendido} id="suspendido" name='suspendido' />
                                     </div>
                                 </td>
                             </tr>

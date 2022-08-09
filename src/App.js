@@ -20,6 +20,7 @@ import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
 import Home from './Pages/Home';
 import VerUsuarios from './Components/VerUsuarios/VerUsuarios';
+import PaginaError from './Pages/PaginaError/PaginaError';
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           <Route path='/agregarCategoria' element={ rolUsuario === 'admin' ? (<AgregarCategoria />) : <Navigate to={'/'} /> } />
           <Route path='/verCategorias' element={ rolUsuario === 'admin' ? (<VerCategorias />) : <Navigate to={'/'} /> } />
           <Route path='/verUsuarios' element={ rolUsuario === 'admin' ? (<VerUsuarios />) : <Navigate to={'/'} />} />
+          <Route path='/*' element={<PaginaError />}/>
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import styles from './Crads.module.css';
 import { Link } from 'react-router-dom';
 import { TiShoppingCart } from "react-icons/ti";
@@ -7,10 +7,10 @@ import clientAxios from '../../Config/clientAxios';
 import Swal from 'sweetalert2';
 import { FiEdit } from "react-icons/fi";
 
-const Cards = ({ juego }) => {
+const Cards = ({ juego, flag, setFlag }) => {
     const rolUsuario = localStorage.getItem('rol');
     const [infoEditada, setInfoEditada] = useState({
-        precio: juego.precio, portada: juego.portada, trailer: juego.trailer
+        precio: juego.precio, portada: juego.portada, trailer: juego.trailer, nombre: juego.nombre, categoria: juego.categoria, slider: juego.slider
     });
     const [destacado, setDestacado] = useState(juego.destacado)
     const confirmarDestacado = () => {
@@ -33,9 +33,18 @@ const Cards = ({ juego }) => {
         clientAxios.patch(`/juegos/editarJuego/${juego._id}`, infoEditada)
             .then(response => {
                 if (response.status === 200) {
-                    alert('Juego editado correctamente')
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Juego editado correctamente',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 } else {
-                    alert('Ha ocurrido un error y no se pudo editar el juego')
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ha ocurrido un error y no se pudo editar el juego',
+                    })
                 }
                 e.target.reset();
             }).catch(error => {
@@ -66,6 +75,7 @@ const Cards = ({ juego }) => {
                             showConfirmButton: false,
                             timer: 1500
                         })
+                        setFlag(!flag)
                     }
                 }).catch(error => {
                     Swal.fire({
@@ -106,16 +116,28 @@ const Cards = ({ juego }) => {
                         </div>
                         <form class="modal-body" onSubmit={handleForm}>
                             <div className='my-4'>
+                                <label htmlFor="nombre">Nombre</label>
+                                <input maxLength={40} className={` ${styles.inputJuego} ms-3`} onChange={handleChange} defaultValue={juego.nombre} type="text" id='nombre' name='nombre' />
+                            </div>
+                            <div className='my-4'>
+                                <label htmlFor="categoria">Categoria</label>
+                                <input maxLength={15} className={` ${styles.inputJuego} ms-3`} onChange={handleChange} defaultValue={juego.categoria} type="text" id='categoria' name='categoria' />
+                            </div>
+                            <div className='my-4'>
                                 <label htmlFor="precio">Precio</label>
-                                <input maxLength={5} className={` ${styles.inputJuego} ms-3`} onChange={handleChange} type="number" id='precio' name='precio' />
+                                <input maxLength={5} className={` ${styles.inputJuego} ms-3`} onChange={handleChange} defaultValue={juego.precio} type="number" id='precio' name='precio' />
                             </div>
                             <div className='my-4'>
                                 <label htmlFor="portada">Portada</label>
-                                <input className={`${styles.inputJuego} ms-3`} type="text" onChange={handleChange} id='portada' name='portada' />
+                                <input className={`${styles.inputJuego} ms-3`} type="text" onChange={handleChange} defaultValue={juego.portada} id='portada' name='portada' />
+                            </div>
+                            <div className='my-4'>
+                                <label htmlFor="slider">Slider</label>
+                                <input className={`${styles.inputJuego} ms-3`} type="text" onChange={handleChange} defaultValue={juego.slider} id='slider' name='slider' />
                             </div>
                             <div className='my-4'>
                                 <label htmlFor="trailer">Trailer</label>
-                                <input className={` ${styles.inputJuego} ms-3`} type="text" onChange={handleChange} id='trailer' name='trailer' />
+                                <input className={` ${styles.inputJuego} ms-3`} type="text" onChange={handleChange} defaultValue={juego.trailer} id='trailer' name='trailer' />
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

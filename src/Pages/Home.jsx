@@ -7,7 +7,7 @@ function Home() {
     return (
         <>
             <Carousel />
-            <GridCategorias />
+            <GridCategorias/>
         </>
     )
 }
