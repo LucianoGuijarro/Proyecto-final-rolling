@@ -4,15 +4,15 @@ import Grid from '../Grid/Grid';
 
 const GridCategorias = () => {
   const [categoria, setCategoria] = useState([]);
-  useEffect (() => {
+  useEffect(() => {
     clientAxios.get('/categorias/verCategorias')
-    .then(response => setCategoria(response.data))
+      .then(response => setCategoria(response.data))
   }, [])
   return (
     <>
-    {
-      categoria.map(categoria =>  <Grid categoria={categoria.nombre} key={categoria._id}/>)
-    }
+      {
+        categoria.map(categoria => { return (<Grid categoria={categoria.nombre} key={categoria._id} />) })
+      }
     </>
   )
 }

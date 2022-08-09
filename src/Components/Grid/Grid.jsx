@@ -17,7 +17,7 @@ const Grid = ({categoria}) => {
                 <p className='fs-1 text-center text-light text-uppercase'>{categoria}</p>
                     {
                         juego.map((juego) => {
-                            return <Cards juego={juego} key={juego._id} />
+                            return (<Cards juego={juego} key={juego._id} />)
                         })
                     }
                 <Link to={`/categoria/${categoria}` }><button className={`${styles.boton} text-end mt-4`}>Ver todos</button></Link> 
