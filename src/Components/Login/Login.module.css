@@ -6,13 +6,16 @@
 }
 
 body{
-    background-color: var(--main-black);
+    display: flex;
+    flex-direction: column;
+    min-height: 000vh !important
 }
 .formStyles{
     background-color: var(--main-blue);
     border-radius: 0.3rem;
     margin-top: 3rem;
     color: white;
+    margin-bottom: 13.1rem !important;
 }
 
 .btnIniciarSesion{
@@ -23,3 +26,4 @@ form input{
     background-color: var(--main-black);
     color: var(--main-black);
 }
+

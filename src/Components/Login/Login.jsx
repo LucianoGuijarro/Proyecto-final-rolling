@@ -32,6 +32,7 @@ const Login = ({ flag, setFlag }) => {
     })
   }
   return (
+    
     <div className={`${styles.formStyles} container col-sm-12 col-md-6 col-lg-6  p-4 mt-5 align-items-center mb-5`}>
       <h5 className="py-3 ">INICIAR SESION</h5>
       <form onSubmit={handleSubmit}>

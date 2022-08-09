@@ -113,7 +113,7 @@ const CreateNewUser = () => {
             </div>
           </div>
           :
-          <div className={`container col-sm-10 col-md-5 ${styles.formStyles} p-2 align-items-center `}>
+          <div className={`container col-sm-10 col-md-5 col-6 ${styles.formStyles} p-2 align-items-center`}>
             <h5 className="py-3 ">CREAR TU NUEVA CUENTA</h5>
             <form onSubmit={handleSubmit}>
               <div className="mb-2">
@@ -128,12 +128,12 @@ const CreateNewUser = () => {
               </div>
               <div className="mb-2">
                 <label htmlFor="newUserInputPassword" className="form-label">Contraseña</label>
-                <input type="password" maxLength={16} onChange={handleChange} onBlur={handleBlur} name='passwordUser' className="form-control" id="newUserInputPassword" />
+                <input type="password" maxLength={40} onChange={handleChange} onBlur={handleBlur} name='passwordUser' className="form-control" id="newUserInputPassword" />
                 {errors.passwordUser ? <p className='text-danger py-0'>{errors.passwordUser}</p> : null}
               </div>
               <div className="mb-2">
                 <label htmlFor="newUserPasswordConfirm" className="form-label">Confirmar Contraseña</label>
-                <input type="password" maxLength={16} onChange={event => setConfirmPasword(event.target.value)} onBlur={handleBlur} className="form-control" id="newUserPasswordConfirm" />
+                <input type="password" maxLength={40} onChange={event => setConfirmPasword(event.target.value)} onBlur={handleBlur} className="form-control" id="newUserPasswordConfirm" />
                 {errors.confirmPassword ? <p className='text-danger m-0'>{errors.confirmPassword}</p> : null}
               </div>
               <div className="mb-2">
