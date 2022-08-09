@@ -8,8 +8,6 @@ const Login = ({flag, setFlag}) => {
     "passwordUser": ""
   })
   const [isLoged, setIsLoged] = useState(false)
-  // const [nickName, setNickName] = useState()
-  // hacer un post y la logica de logue se hace en el back
   const handleSubmit = async (e) => {
     e.preventDefault()
     fetch('https://nawen-games-backend.herokuapp.com/login', {
@@ -23,12 +21,10 @@ const Login = ({flag, setFlag}) => {
       if(response.status !== 200){
         return alert('El usuario o la contraseña ingresados no son correctos')
       }
-      // console.log(response)
       return response.json()
     })
     .then(response =>{
       e.target.reset()
-      // setNickName(response.nickName)
       setIsLoged(true)
       setFlag(!flag)
       localStorage.setItem("token",`${response.token}`)

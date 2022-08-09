@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Navigate, useNavigate } from "react-router-dom";
-// import css
 import styles from '../CreateNewUser/CreateNewUser.module.css';
 import Swal from 'sweetalert2';
 import clientAxios from '../../Config/clientAxios';
@@ -30,22 +29,12 @@ const CreateNewUser = () => {
       ...newUserData,
       [target.name]: target.value
     })
-    // console.log(newUserData)
   }
-  // metodo post
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // const validacionContraseña = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
 
     if (Object.keys(errors).length === 0) {
       setLoading(true)
-      // fetch('http://localhost:8080/users', {
-      //   method: 'POST',
-      //   body: JSON.stringify(newUserData),
-      //   headers: {
-      //     'Content-type': 'application/json; charset=UTF-8'
-      //   }
-      // })
       clientAxios.post('/users/agregarUsuario', newUserData)
         .then(response => {
           if (response.status === 201) {
@@ -74,24 +63,6 @@ const CreateNewUser = () => {
           })
         })
         e.target.reset()
-        // .then(response => {
-        //   if (response.status === 201) {
-
-
-        //     e.target.reset()
-
-        //   }
-        //   response.json()
-        // })
-        // .then((response) => {
-        //   return alert('Ha ocurrido un error,verifique la informacion')
-
-
-
-
-        //   //aca deberia llevarte a la ruta de Login
-        // })
-        // .catch(error => console.log(error))
     } else alert("Hay campos incompletos")
   }
 

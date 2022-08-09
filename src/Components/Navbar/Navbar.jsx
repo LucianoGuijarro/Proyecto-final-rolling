@@ -143,7 +143,6 @@ function Navbar({ rol, flag, setFlag }) {
                           false
                         )}
                       </li>
-                      {/* <li><a className={`{styles.text} dropdown-item text-white`} href="/">Dropdown link</a></li> */}
                     </ul>
                   </div>
                 </li>

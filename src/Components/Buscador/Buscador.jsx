@@ -4,9 +4,9 @@ import styles from "../Buscador/Buscador.module.css";
 import { Link } from "react-router-dom";
 
 const Buscador = () => {
-  const [search, setSearch] = useState(""); //guardo el text que busco
-  const [juegos, setJuegos] = useState([]); //almaceno todos los juegos de la base de datos
-  const [resultsSerch, setResultsSerch] = useState([]); //almacenar los juegos filtrados
+  const [search, setSearch] = useState("");
+  const [juegos, setJuegos] = useState([]);
+  const [resultsSerch, setResultsSerch] = useState([]);
 
   useEffect(() => {
     clientAxios.get("/juegos/verJuegos").then((response) => {
@@ -47,7 +47,6 @@ const Buscador = () => {
       <input
         type="text"
         className="form-control col-2 dropdown-toggle"
-        // value={search}
         placeholder="Buscar Juego"
         data-bs-toggle="dropdown"
         arial-expanded="false"
