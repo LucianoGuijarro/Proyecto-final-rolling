@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 import styles from './Crads.module.css';
 import { Link } from 'react-router-dom';
 import { TiShoppingCart } from "react-icons/ti";
@@ -14,19 +14,19 @@ const Cards = ({ juego }) => {
     });
     const [destacado, setDestacado] = useState(juego.destacado)
     const confirmarDestacado = () => {
-        setDestacado(!juego.destacado)
         clientAxios.patch(`/juegos/editarJuego/${juego._id}`, {
-            destacado: destacado
+            destacado: !juego.destacado
         })
-        .then(response => {
-            if (response.status === 200) {
-                alert('Juego editado correctamente')
-            } else {
+            .then(response => {
+                if (response.status === 200) {
+                    setDestacado(!juego.destacado)
+                    alert('Juego editado correctamente')
+                } else {
+                    alert('Ha ocurrido un error y no se pudo editar el juego')
+                }
+            }).catch(error => {
                 alert('Ha ocurrido un error y no se pudo editar el juego')
-            }
-        }).catch( error => {
-            alert('Ha ocurrido un error y no se pudo editar el juego')
-        })
+            })
     }
     const handleForm = (e) => {
         e.preventDefault();
@@ -38,7 +38,7 @@ const Cards = ({ juego }) => {
                     alert('Ha ocurrido un error y no se pudo editar el juego')
                 }
                 e.target.reset();
-            }).catch( error => {
+            }).catch(error => {
                 alert('Ha ocurrido un error y no se pudo editar el juego')
             })
     }
@@ -88,7 +88,7 @@ const Cards = ({ juego }) => {
                 {
                     rolUsuario === 'admin' ? <div className='col-sm-12 col d-flex justify-content-center'>
                         <button onClick={() => eliminarProducto()} className={`${styles.botonEliminar} me-4`}><TiDelete color="red" size={40} /></button>
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" className={`${styles.botonEditar}`}><FiEdit color='white' size={28} /></button>
+                        <button type="button" data-bs-toggle="modal" data-bs-target={`#modal-${juego._id}`} className={`${styles.botonEditar}`}><FiEdit color='white' size={28} /></button>
                         <div class="form-check form-switch m-2">
                             <label className="form-check-label text-light" htmlFor="destacado">Destacado</label>
                             <input className="form-check-input" type="checkbox" onClick={() => confirmarDestacado()} defaultChecked={destacado} role="switch" id="destacado" name='destacado' />
@@ -97,7 +97,7 @@ const Cards = ({ juego }) => {
                         : false
                 }
             </div>
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id={`modal-${juego._id}`} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -107,15 +107,15 @@ const Cards = ({ juego }) => {
                         <form class="modal-body" onSubmit={handleForm}>
                             <div className='my-4'>
                                 <label htmlFor="precio">Precio</label>
-                                <input maxLength={5}  className={` ${styles.inputJuego} ms-3`} onChange={handleChange} type="number" id='precio' name='precio' />
+                                <input maxLength={5} className={` ${styles.inputJuego} ms-3`} onChange={handleChange} type="number" id='precio' name='precio' />
                             </div>
                             <div className='my-4'>
                                 <label htmlFor="portada">Portada</label>
-                                <input className={`${styles.inputJuego} ms-3`}  type="text" onChange={handleChange} id='portada' name='portada' />
+                                <input className={`${styles.inputJuego} ms-3`} type="text" onChange={handleChange} id='portada' name='portada' />
                             </div>
                             <div className='my-4'>
                                 <label htmlFor="trailer">Trailer</label>
-                                <input className={` ${styles.inputJuego} ms-3`}  type="text" onChange={handleChange} id='trailer' name='trailer' />
+                                <input className={` ${styles.inputJuego} ms-3`} type="text" onChange={handleChange} id='trailer' name='trailer' />
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

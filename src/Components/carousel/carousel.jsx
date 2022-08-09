@@ -25,7 +25,7 @@ function Carousel() {
             </div>
             <div className="carousel-inner">
                 <div className="carousel-item active">
-                    <img src="./carrusel.jpg" className={`${styles.imagen} d-block w-100`} alt="Carousel1" />
+                    <img src="./sliderPrincipal.jpg" className={`${styles.imagen} d-block w-100`} alt="Carousel1" />
                 </div>
                 {
                     juegosDestacados.map((juego) => {

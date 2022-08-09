@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import clientAxios from '../../Config/clientAxios';
 import { MdDeleteForever } from "react-icons/md";
-import { FiEdit } from "react-icons/fi";
 import styles from './VerCategorias.module.css';
 import Swal from 'sweetalert2';
 
 const VerCategorias = () => {
     const [categorias, setCategorias] = useState([]);
+    const [flag, setFlag] = useState(true)
     useEffect(() => {
         clientAxios.get('/categorias/verCategorias')
             .then(response => setCategorias(response.data))
-    }, [])
+    }, [flag])
     const eliminarCategoria = (id) => {
         if (window.confirm('Seguro quieres eliminar esta categoria?')) {
             clientAxios.delete(`/categorias/eliminarCategoria/${id}`)
@@ -28,6 +28,7 @@ const VerCategorias = () => {
                             showConfirmButton: false,
                             timer: 1500
                         })
+                        setFlag(!flag)
                     }
                 }).catch(error => {
                     Swal.fire({
@@ -54,7 +55,6 @@ const VerCategorias = () => {
                                 <tr key={i}>
                                     <td className='text-light' >{cat.nombre}</td>
                                     <td>
-                                        <button className={`${styles.boton}`}><FiEdit size={25} color={'white'} /></button>
                                         <button className={`${styles.boton}`} onClick={() => eliminarCategoria(cat._id)}><MdDeleteForever size={25} color={'white'} /></button>
                                     </td>
                                 </tr>
