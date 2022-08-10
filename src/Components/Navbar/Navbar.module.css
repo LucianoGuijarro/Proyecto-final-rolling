@@ -30,7 +30,6 @@ nav {
     width: 8rem;
 }
 .butonIniciar:hover{
-
     border: solid var(--main-light-blue);
     background-color: var(--main-white);
 }
@@ -43,3 +42,35 @@ nav {
 .buton:hover{
     border: solid white;
 }
+
+ /* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    .botonesRegistoIniciasSesion{
+        display: flex;
+        padding: 0;
+    }
+    .butonsBuscador{
+        flex-direction: column-reverse;
+        padding-top: 0;
+    }
+ }
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) { 
+    
+ }
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) { 
+
+ }
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) { 
+
+ }
+
+/* X-Large devices (large desktops, less than 1400px) */
+@media (max-width: 1399.98px) { 
+
+ }

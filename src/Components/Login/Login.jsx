@@ -11,7 +11,7 @@ const Login = ({ flag, setFlag }) => {
   const [isLoged, setIsLoged] = useState(false)
   const handleSubmit = async (e) => {
     e.preventDefault()
-    clientAxios.post('login', userInit)
+    clientAxios.post('/login', userInit)
       .then(response => {
         if (response.status !== 200) {
           return alert('El usuario o la contraseña ingresados no son correctos')
@@ -24,6 +24,7 @@ const Login = ({ flag, setFlag }) => {
         localStorage.setItem('rol', `${response.data.rol}`)
         alert(`Bienvenido/a ${response.data.nickName}`)
       })
+      .catch(error =>{console.log(error)})
   }
   const handleChange = ({ target }) => {
     setUserInit({

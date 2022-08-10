@@ -41,9 +41,10 @@ const Buscador = () => {
     setSearch(target.value);
   };
 
-  const captureInfo = (e) => {};
+  // const captureInfo = (e) => {};
+
   return (
-    <div className={`container dropdown`}>
+    <div className={`${styles.containerBuscadorMedia} container dropdown col-md-8 col-sm-12`}>
       <input
         type="text"
         className="form-control col-2 dropdown-toggle"
@@ -67,9 +68,9 @@ const Buscador = () => {
             resultsSerch.map((juego) => {
               return (
                 <Link
-                  className="dropdown-item"
+                  className={`dropdown-item`}
                   to={`verJuego/${juego._id}`}
-                  onClick={captureInfo}
+                  // onClick={captureInfo}
                   key={juego._id}
                 >
                   {juego.nombre}
