@@ -5,10 +5,15 @@ import Cards from '../Cards/Cards'
 const VerTodosJuegos = () => {
     const [juegos, setJuegos] = useState([])
     const [flag, setFlag] = useState(true)
+    
     useEffect(() => {
         clientAxios.get('/juegos/verJuegos')
-        .then(response => setJuegos(response.data))
+        .then(response => {
+            setJuegos(response.data)
+            console.log(response.data);
+        })
     }, [flag])
+
   return (
     <>
     <div className="container">

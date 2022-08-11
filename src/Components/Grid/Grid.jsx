@@ -6,6 +6,7 @@ import styles from './grid.module.css';
 
 const Grid = ({categoria}) => {
   const [juego, setJuego] = useState([]);
+
   useEffect(() => {
     clientAxios.get(`/juegos/verJuegos/${categoria}`)
       .then(response => setJuego(response.data))
