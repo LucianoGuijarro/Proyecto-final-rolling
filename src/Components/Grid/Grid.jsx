@@ -20,7 +20,7 @@ const Grid = ({categoria}) => {
                             return (<Cards juego={juego} key={juego._id} />)
                         })
                     }
-                <Link to={`/categoria/${categoria}` }><button className={`${styles.boton} text-end mt-4`}>Ver todos</button></Link> 
+                <Link to={`/categoria/${categoria}`} className={`d-flex`}><button className={`${styles.boton} px-2 p2-1 mt-4`}>Ver todos</button></Link> 
                 </div>
             </div>
     </>
