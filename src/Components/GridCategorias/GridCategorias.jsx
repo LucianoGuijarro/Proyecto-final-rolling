@@ -5,7 +5,7 @@ import Grid from "../Grid/Grid";
 const GridCategorias = () => {
   const [isLoading, setisLoading] = useState(true);
   const [categoria, setCategoria] = useState([]);
-  console.log(isLoading);
+
   useEffect(() => {
     clientAxios.get("/categorias/verCategorias").then((response) => {
       setCategoria(response.data);
@@ -13,7 +13,7 @@ const GridCategorias = () => {
     });
   }, []);
   
-  console.log(isLoading);
+
 
   return (
     <>
