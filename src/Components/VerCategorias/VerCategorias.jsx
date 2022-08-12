@@ -7,11 +7,13 @@ import Swal from "sweetalert2";
 const VerCategorias = () => {
   const [categorias, setCategorias] = useState([]);
   const [flag, setFlag] = useState(true);
+
   useEffect(() => {
     clientAxios
       .get("/categorias/verCategorias")
       .then((response) => setCategorias(response.data));
   }, [flag]);
+
   const eliminarCategoria = (id) => {
     if (window.confirm("Seguro quieres eliminar esta categoria?")) {
       clientAxios
@@ -42,6 +44,7 @@ const VerCategorias = () => {
         });
     }
   };
+  
   return (
     <>
       <div className="container">
