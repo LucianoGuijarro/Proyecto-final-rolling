@@ -5,24 +5,30 @@ import styles from '../Login/Login.module.css';
 
 const Login = ({ flag, setFlag }) => {
   const [userInit, setUserInit] = useState({
-    "correoUser": "",
-    "passwordUser": ""
+    correoUser: "",
+    passwordUser: ""
   })
   const [isLoged, setIsLoged] = useState(false)
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    clientAxios.post('login', userInit)
+    clientAxios.post('/login', userInit)
       .then(response => {
-        if (response.status !== 200) {
+        if (response.status === 401) {
           return alert('El usuario o la contraseña ingresados no son correctos')
+        } else if (response.status === 400) {
+          return alert('No tiene autorizacion para logearse')
+        } else {
+          e.target.reset()
+          setIsLoged(true)
+          setFlag(!flag)
+          localStorage.setItem("token", `${response.data.token}`)
+          localStorage.setItem("nickName", `${response.data.nickName}`)
+          localStorage.setItem('rol', `${response.data.rol}`)
+          alert(`Bienvenido/a ${response.data.nickName}`)
         }
-        e.target.reset()
-        setIsLoged(true)
-        setFlag(!flag)
-        localStorage.setItem("token", `${response.data.token}`)
-        localStorage.setItem("nickName", `${response.data.nickName}`)
-        localStorage.setItem('rol', `${response.data.rol}`)
-        alert(`Bienvenido/a ${response.data.nickName}`)
+      })
+      .catch(error => {
+        console.log(error)
       })
   }
   const handleChange = ({ target }) => {
@@ -32,7 +38,7 @@ const Login = ({ flag, setFlag }) => {
     })
   }
   return (
-    
+
     <div className={`${styles.formStyles} container col-sm-12 col-md-6 col-lg-6  p-4 mt-5 align-items-center mb-5`}>
       <h5 className="py-3 ">INICIAR SESION</h5>
       <form onSubmit={handleSubmit}>

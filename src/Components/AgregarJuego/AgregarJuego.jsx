@@ -62,7 +62,7 @@ const AgregarJuego = () => {
                         </div>
                         <div className='my-4'>
                             <label className='text-light' htmlFor="fechaLanzamiento">Fecha de Lanzamiento</label>
-                            <input className={`${styles.inputJuego} ms-3`} type="date" id='fechaLanzamiento' name='fechaLanzamiento' onChange={handleChange} required />
+                            <input className={`${styles.inputJuego} ms-3`} type="date" max={'2024-01-01'} min={'1990-01-01'} id='fechaLanzamiento' name='fechaLanzamiento' onChange={handleChange} required />
                         </div>
                         <div className='my-4'>
                             <label className='text-light' htmlFor="categoria">Categoria</label>
