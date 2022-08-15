@@ -70,19 +70,19 @@ const AgregarJuego = () => {
                         </div>
                         <div className='my-4'>
                             <label className='text-light' htmlFor="precio">Precio</label>
-                            <input maxLength={5} className={` ${styles.inputJuego} ms-3`} type="number" id='precio' name='precio' onChange={handleChange} required />
+                            <input maxLength={5} className={` ${styles.inputJuego} ms-3`} min={1} type="number" id='precio' name='precio' onChange={handleChange} required />
                         </div>
                         <div className='my-4'>
                             <label className='text-light' htmlFor="portada">Portada</label>
-                            <input className={`${styles.inputJuego} ms-3`} type="text" id='portada' name='portada' onChange={handleChange} required />
+                            <input className={`${styles.inputJuego} ms-3`} type="url" id='portada' name='portada' onChange={handleChange} required />
                         </div>
                         <div className='my-4'>
                             <label className='text-light' htmlFor="slider">Slider</label>
-                            <input className={`${styles.inputJuego} ms-3`} type="text" id='slider' name='slider' onChange={handleChange} required />
+                            <input className={`${styles.inputJuego} ms-3`} type="url" id='slider' name='slider' onChange={handleChange} required />
                         </div>
                         <div className='my-4'>
                             <label className='text-light' htmlFor="trailer">Trailer</label>
-                            <input className={` ${styles.inputJuego} ms-3`} type="text" id='trailer' onChange={handleChange} name='trailer' />
+                            <input className={` ${styles.inputJuego} ms-3`} type="url" id='trailer' onChange={handleChange} name='trailer' />
                         </div>
                         <div className='my-4 d-flex align-items-center'>
                             <label className='text-light' htmlFor="sinopsis">Sinopsis</label>
