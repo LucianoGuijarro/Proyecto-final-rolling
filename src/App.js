@@ -22,7 +22,6 @@ import Home from './Pages/Home';
 import VerUsuarios from './Components/VerUsuarios/VerUsuarios';
 import PaginaError from './Pages/PaginaError/PaginaError';
 
-
 function App() {
   const rolUsuario = localStorage.getItem('rol');
   const [flag, setFlag] = useState(false)

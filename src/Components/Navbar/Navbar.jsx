@@ -96,7 +96,7 @@ function Navbar({ rol, flag, setFlag }) {
               </ul>
             </li>
           </ul>
-          <ul className="navbar-nav d-flex justify-content-end align-items-center col-6">
+          <ul className={`navbar-nav d-flex justify-content-end align-items-center ${styles.butonsBuscador}`}>
             <Buscador />
             {localStorage.getItem("nickName") != null ? (
               // nickNameStorage == null
@@ -147,8 +147,8 @@ function Navbar({ rol, flag, setFlag }) {
                   </div>
                 </li>
               </>
-            ) : (
-              <>
+            ) : (              
+              <div className={`${styles.botonesRegistoIniciasSesion} d-flex pt-0 pb-3 container-fluid`}>
                 <li className="nav-item">
                   <button
                     type="button"
@@ -177,7 +177,7 @@ function Navbar({ rol, flag, setFlag }) {
                     </Link>
                   </button>
                 </li>
-              </>
+              </div>          
             )}
           </ul>
         </div>

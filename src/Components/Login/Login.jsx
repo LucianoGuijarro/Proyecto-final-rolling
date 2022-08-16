@@ -30,6 +30,7 @@ const Login = ({ flag, setFlag }) => {
       .catch(error => {
         console.log(error)
       })
+      .catch(error =>{console.log(error)})
   }
   const handleChange = ({ target }) => {
     setUserInit({
