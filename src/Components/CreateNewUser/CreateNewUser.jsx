@@ -3,6 +3,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import styles from "../CreateNewUser/CreateNewUser.module.css";
 import Swal from "sweetalert2";
 import clientAxios from "../../Config/clientAxios";
+import country from "country-list-js";
 
 const CreateNewUser = () => {
   const navigate = useNavigate();
@@ -105,6 +106,11 @@ const CreateNewUser = () => {
     }
     return errores;
   };
+
+// buscador de paises
+  let countriesByName = country.names()
+  let asd = countriesByName.filter(pais => pais.toLowerCase().includes(newUserData.countryUser))
+  console.log(asd);
 
   // <div className="d-flex justify-content-center vh-100">
   //   <div className="spinner-border" role="status">
