@@ -106,12 +106,12 @@ const CreateNewUser = () => {
     }
     return errores;
   };
-
+// *****************************************************
 // buscador de paises
   let countriesByName = country.names()
   let asd = countriesByName.filter(pais => pais.toLowerCase().includes(newUserData.countryUser))
   console.log(asd);
-
+// ***********************************************
   // <div className="d-flex justify-content-center vh-100">
   //   <div className="spinner-border" role="status">
   //     <span className="visually-hidden">Loading...</span>
