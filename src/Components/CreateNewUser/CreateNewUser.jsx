@@ -4,15 +4,19 @@ import styles from "../CreateNewUser/CreateNewUser.module.css";
 import Swal from "sweetalert2";
 import clientAxios from "../../Config/clientAxios";
 import country from "country-list-js";
+import Select from "react-select";
+
 
 const CreateNewUser = () => {
+  const [countrySelect, setCountrySelect] = useState("")
   const navigate = useNavigate();
   const [newUserData, setNewUserData] = useState({
     correoUser: "",
     nickNameUser: "",
     passwordUser: "",
-    countryUser: "",
+    countryUser: countrySelect,
   });
+
   const [confirmPasword, setConfirmPasword] = useState("");
   const [errors, setErrors] = useState({
     correoUser: "*Este campo es obligatorio*",
@@ -30,7 +34,17 @@ const CreateNewUser = () => {
       ...newUserData,
       [target.name]: target.value,
     });
+    // console.log(target.name);
   };
+  
+  const countries = country.names().map(nombrePais => {
+    let newObject = {
+     value: nombrePais,
+     label: nombrePais
+   }
+   return newObject
+ })
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -101,22 +115,42 @@ const CreateNewUser = () => {
       errores.confirmPassword = "Las contraseñas no coinciden";
       console.log("valido confirm");
     }
-    if (!newUserData.countryUser) {
+    if (!countrySelect) {
       errores.countryUser = "*Este campo es obligatorio*";
     }
     return errores;
   };
-// *****************************************************
-// buscador de paises
-  let countriesByName = country.names()
-  let asd = countriesByName.filter(pais => pais.toLowerCase().includes(newUserData.countryUser))
-  console.log(asd);
-// ***********************************************
+  // *****************************************************
+  // buscador de paises
+  // let countriesByName = country.names()
+
+  // const [countryResults, setCountryResults] = useState([])
+
+
+  // useEffect(() => {
+  //   const countryList = () => {
+  //     let countryFinded = country
+  //       .names()
+  //       .filter((pais) =>
+  //         pais.toLowerCase().includes(newUserData.countryUser.toLowerCase())
+  //       );
+  //     setCountryResults(countryFinded);
+  //     console.log(countryFinded);
+  //     return countryFinded;
+  //   };
+  //   countryList();
+  // }, [newUserData.countryUser]);
+
+  // ***********************************************
+
   // <div className="d-flex justify-content-center vh-100">
   //   <div className="spinner-border" role="status">
   //     <span className="visually-hidden">Loading...</span>
   //   </div>
   // </div>;
+
+
+  
 
   return (
     <>
@@ -205,13 +239,22 @@ const CreateNewUser = () => {
               <label htmlFor="userCountry" className="form-label">
                 Pais de residencia
               </label>
-              <input
+              {/* <input
                 type="text"
                 maxLength={20}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 name="countryUser"
                 className="form-control"
+                id="userCountry"
+                data-bs-toggle="dropdown"
+              /> */}
+              
+              <Select
+                options={countries}
+                name="countryUser"
+                onChange={e=>setCountrySelect(e.value)}
+                onBlur={handleBlur}
                 id="userCountry"
               />
               {errors.countryUser ? (
