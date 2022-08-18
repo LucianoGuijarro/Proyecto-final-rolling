@@ -13,7 +13,7 @@ const Login = ({ flag, setFlag }) => {
 
   const [isCorreoOk, setIsCorreoOk] = useState(false);
 
-  const [isPasswordOK, setIsPasswordOK] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     clientAxios
