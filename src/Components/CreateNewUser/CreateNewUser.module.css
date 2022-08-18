@@ -19,10 +19,10 @@ body{
    background-color: var(--main-white);
 }
 
-form input{
-    background-color: var(--main-black);
-    color: var(--main-black);
+.select{
+    color: black;
 }
+
 
 /* X-Small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
