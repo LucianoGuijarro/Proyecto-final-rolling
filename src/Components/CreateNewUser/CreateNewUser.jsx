@@ -6,7 +6,6 @@ import clientAxios from "../../Config/clientAxios";
 import country from "country-list-js";
 import Select from "react-select";
 
-
 const CreateNewUser = () => {
   const [countrySelect, setCountrySelect] = useState("")
   const navigate = useNavigate();
@@ -72,6 +71,7 @@ const CreateNewUser = () => {
             navigate("./CreateNewUser.jsx");
             setLoading(false);
           }
+          console.log(newUserData);
         })
         .catch((error) => {
           Swal.fire({
@@ -79,6 +79,7 @@ const CreateNewUser = () => {
             title: "Oops...",
             text: "Ha ocurrido un error y el usuario no se creo correcamente",
           });
+          console.log(error)
         });
       e.target.reset();
     } else alert("Hay campos incompletos");
@@ -218,16 +219,6 @@ const CreateNewUser = () => {
               <label htmlFor="userCountry" className="form-label">
                 Pais de residencia
               </label>
-              {/* <input
-                type="text"
-                maxLength={20}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                name="countryUser"
-                className="form-control"
-                id="userCountry"
-                data-bs-toggle="dropdown"
-              /> */}
               
               <Select
                 options={countries}
@@ -235,6 +226,7 @@ const CreateNewUser = () => {
                 onChange={e=>setCountrySelect(e.value)}
                 onBlur={handleBlur}
                 id="userCountry"
+                className={`${styles.select}`}
               />
               {errors.countryUser ? (
                 <p className="text-danger m-0">{errors.countryUser}</p>
@@ -256,7 +248,7 @@ const CreateNewUser = () => {
             <button
               type="submit"
               className={`${styles.btnCreateAcount} btn  container-fluid`}
-              disabled={disable}
+              disabled={errors || disable ? true : false}
             >
               Crear Cuenta
             </button>
