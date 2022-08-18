@@ -120,28 +120,7 @@ const CreateNewUser = () => {
     }
     return errores;
   };
-  // *****************************************************
-  // buscador de paises
-  // let countriesByName = country.names()
-
-  // const [countryResults, setCountryResults] = useState([])
-
-
-  // useEffect(() => {
-  //   const countryList = () => {
-  //     let countryFinded = country
-  //       .names()
-  //       .filter((pais) =>
-  //         pais.toLowerCase().includes(newUserData.countryUser.toLowerCase())
-  //       );
-  //     setCountryResults(countryFinded);
-  //     console.log(countryFinded);
-  //     return countryFinded;
-  //   };
-  //   countryList();
-  // }, [newUserData.countryUser]);
-
-  // ***********************************************
+ 
 
   // <div className="d-flex justify-content-center vh-100">
   //   <div className="spinner-border" role="status">
