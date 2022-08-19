@@ -116,28 +116,37 @@ const Cards = ({ juego, flag, setFlag }) => {
                         </div>
                         <form class="modal-body" onSubmit={handleForm}>
                             <div className='my-4'>
-                                <label htmlFor="nombre">Nombre</label>
+                                <label className='form-label' htmlFor="nombre">Nombre</label>
                                 <input maxLength={40} className={` ${styles.inputJuego} ms-3`} onChange={handleChange} defaultValue={juego.nombre} type="text" id='nombre' name='nombre' />
                             </div>
-                            <div className='my-4'>
+                            {/* <div className='my-4'>
                                 <label htmlFor="categoria">Categoria</label>
                                 <input maxLength={15} className={` ${styles.inputJuego} ms-3`} onChange={handleChange} defaultValue={juego.categoria} type="text" id='categoria' name='categoria' />
+                            </div> */}
+                            <div className='my-4'>
+                                <label className='form-label' htmlFor="categoria">Categoria</label>
+                                <select class={`${styles.inputJuego} ms-3`} id='categoria' defaultValue={juego.categoria} name='categoria' onChange={handleChange}>
+                                    <option selected>Seleccione una categoria</option>
+                                    <option value="accion">Accion</option>
+                                    <option value="aventura">Aventura</option>
+                                    <option value="deportes">Deportes</option>
+                                </select>
                             </div>
                             <div className='my-4'>
-                                <label htmlFor="precio">Precio</label>
+                                <label className='form-label' htmlFor="precio">Precio</label>
                                 <input maxLength={5} className={` ${styles.inputJuego} ms-3`} onChange={handleChange} defaultValue={juego.precio} type="number" id='precio' name='precio' />
                             </div>
                             <div className='my-4'>
-                                <label htmlFor="portada">Portada</label>
-                                <input className={`${styles.inputJuego} ms-3`} type="text" onChange={handleChange} defaultValue={juego.portada} id='portada' name='portada' />
+                                <label className='form-label' htmlFor="portada">Portada</label>
+                                <input className={`${styles.inputJuego} ms-3`} type="url" onChange={handleChange} defaultValue={juego.portada} id='portada' name='portada' />
                             </div>
                             <div className='my-4'>
-                                <label htmlFor="slider">Slider</label>
-                                <input className={`${styles.inputJuego} ms-3`} type="text" onChange={handleChange} defaultValue={juego.slider} id='slider' name='slider' />
+                                <label className='form-label' htmlFor="slider">Slider</label>
+                                <input className={`${styles.inputJuego} ms-3`} type="url" onChange={handleChange} defaultValue={juego.slider} id='slider' name='slider' />
                             </div>
                             <div className='my-4'>
-                                <label htmlFor="trailer">Trailer</label>
-                                <input className={` ${styles.inputJuego} ms-3`} type="text" onChange={handleChange} defaultValue={juego.trailer} id='trailer' name='trailer' />
+                                <label className='form-label' htmlFor="trailer">Trailer</label>
+                                <input className={` ${styles.inputJuego} ms-3`} type="url" onChange={handleChange} defaultValue={juego.trailer} id='trailer' name='trailer' />
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
