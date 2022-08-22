@@ -248,7 +248,7 @@ const CreateNewUser = () => {
             <button
               type="submit"
               className={`${styles.btnCreateAcount} btn  container-fluid`}
-              disabled={errors || disable ? true : false}
+              disabled={!errors || disable ? true : false}
             >
               Crear Cuenta
             </button>
