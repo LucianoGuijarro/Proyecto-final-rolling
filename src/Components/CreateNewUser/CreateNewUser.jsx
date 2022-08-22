@@ -13,7 +13,7 @@ const CreateNewUser = () => {
     correoUser: "",
     nickNameUser: "",
     passwordUser: "",
-    countryUser: countrySelect,
+    countryUser: "",
   });
 
   const [confirmPasword, setConfirmPasword] = useState("");
@@ -32,8 +32,9 @@ const CreateNewUser = () => {
     setNewUserData({
       ...newUserData,
       [target.name]: target.value,
+      countryUser: countrySelect
     });
-    // console.log(target.name);
+    console.log(target.name);
   };
   
   const countries = country.names().map(nombrePais => {
@@ -83,6 +84,8 @@ const CreateNewUser = () => {
         });
       e.target.reset();
     } else alert("Hay campos incompletos");
+    console.log(newUserData);
+    console.log(countrySelect);
   };
 
   const handleBlur = ({ target }) => {
@@ -114,7 +117,6 @@ const CreateNewUser = () => {
 
     if (newUserData.passwordUser !== confirmPasword) {
       errores.confirmPassword = "Las contraseñas no coinciden";
-      console.log("valido confirm");
     }
     if (!countrySelect) {
       errores.countryUser = "*Este campo es obligatorio*";
@@ -248,7 +250,7 @@ const CreateNewUser = () => {
             <button
               type="submit"
               className={`${styles.btnCreateAcount} btn  container-fluid`}
-              disabled={errors || disable ? true : false}
+              disabled={!errors || disable ? true : false}
             >
               Crear Cuenta
             </button>
