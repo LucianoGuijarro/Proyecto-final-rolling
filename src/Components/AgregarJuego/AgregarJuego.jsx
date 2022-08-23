@@ -71,7 +71,7 @@ const AgregarJuego = () => {
                         </div> */}
                         <div className='my-4'>
                             <label className='text-light form-label' htmlFor="categoria">Categoria</label>
-                            <select class={`${styles.inputJuego} form-control ms-3`} id='categoria' name='categoria' onChange={handleChange}>
+                            <select className={`${styles.inputJuego} form-control ms-3`} id='categoria' name='categoria' onChange={handleChange}>
                                 <option selected>Seleccione una categoria</option>
                                 <option value="accion">Accion</option>
                                 <option value="aventura">Aventura</option>

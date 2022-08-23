@@ -74,7 +74,7 @@ const VerUsuarios = () => {
                                     <button className={`${styles.boton}`} onClick={() => eliminarUsuario(user._id)}><MdDeleteForever size={25} color={'white'} /></button>
                                 </td>
                                 <td>
-                                    <div class="form-check form-switch m-2">
+                                    <div className="form-check form-switch m-2">
                                         <label className="form-check-label text-light" htmlFor="suspendido">Ban</label>
                                         <input className="form-check-input" type="checkbox" role="switch" onClick={() => confirmarBaneo(user._id, user.suspendido)} defaultChecked={user.suspendido} id="suspendido" name='suspendido' />
                                     </div>

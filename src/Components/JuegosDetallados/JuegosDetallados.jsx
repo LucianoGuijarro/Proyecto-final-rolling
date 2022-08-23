@@ -37,8 +37,8 @@ const JuegosDetallados = () => {
       <div className='container'>
         {
           usuarioLogeado ?         <form className={`row justify-content-center`}>
-          <div class="form-floating w-50">
-            <textarea class="form-control" id="comentario" name='comentario'></textarea>
+          <div className="form-floating w-50">
+            <textarea className="form-control" id="comentario" name='comentario'></textarea>
             <label htmlFor='comentario'>Escribe tu comentario aqui</label>
           </div>
           <button type='submit' className={`${styles.boton} btn btn-success`}>Enviar comentario</button>

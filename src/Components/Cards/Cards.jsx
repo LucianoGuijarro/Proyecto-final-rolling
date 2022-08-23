@@ -99,7 +99,7 @@ const Cards = ({ juego, flag, setFlag }) => {
                     rolUsuario === 'admin' ? <div className='col-sm-12 col d-flex justify-content-center'>
                         <button onClick={() => eliminarProducto()} className={`${styles.botonEliminar} me-4`}><TiDelete color="red" size={40} /></button>
                         <button type="button" data-bs-toggle="modal" data-bs-target={`#modal-${juego._id}`} className={`${styles.botonEditar}`}><FiEdit color='white' size={28} /></button>
-                        <div class="form-check form-switch m-2">
+                        <div className="form-check form-switch m-2">
                             <label className="form-check-label text-light" htmlFor="destacado">Destacado</label>
                             <input className="form-check-input" type="checkbox" onClick={() => confirmarDestacado()} defaultChecked={destacado} role="switch" id="destacado" name='destacado' />
                         </div>
@@ -107,14 +107,14 @@ const Cards = ({ juego, flag, setFlag }) => {
                         : false
                 }
             </div>
-            <div class="modal fade" id={`modal-${juego._id}`} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Editar Juego</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal fade" id={`modal-${juego._id}`} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="staticBackdropLabel">Editar Juego</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form class="modal-body" onSubmit={handleForm}>
+                        <form className="modal-body" onSubmit={handleForm}>
                             <div className='my-4'>
                                 <label className='form-label' htmlFor="nombre">Nombre</label>
                                 <input maxLength={40} className={` ${styles.inputJuego} ms-3`} onChange={handleChange} defaultValue={juego.nombre} type="text" id='nombre' name='nombre' />
@@ -125,7 +125,7 @@ const Cards = ({ juego, flag, setFlag }) => {
                             </div> */}
                             <div className='my-4'>
                                 <label className='form-label' htmlFor="categoria">Categoria</label>
-                                <select class={`${styles.inputJuego} ms-3`} id='categoria' defaultValue={juego.categoria} name='categoria' onChange={handleChange}>
+                                <select className={`${styles.inputJuego} ms-3`} id='categoria' defaultValue={juego.categoria} name='categoria' onChange={handleChange}>
                                     <option selected>Seleccione una categoria</option>
                                     <option value="accion">Accion</option>
                                     <option value="aventura">Aventura</option>
@@ -148,9 +148,9 @@ const Cards = ({ juego, flag, setFlag }) => {
                                 <label className='form-label' htmlFor="trailer">Trailer</label>
                                 <input className={` ${styles.inputJuego} ms-3`} type="url" onChange={handleChange} defaultValue={juego.trailer} id='trailer' name='trailer' />
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" className="btn btn-primary">Guardar cambios</button>
                             </div>
                         </form>
                     </div>
