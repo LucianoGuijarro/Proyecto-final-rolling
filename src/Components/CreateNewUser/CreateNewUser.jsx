@@ -7,7 +7,7 @@ import country from "country-list-js";
 import Select from "react-select";
 
 const CreateNewUser = () => {
-  const [countrySelect, setCountrySelect] = useState("")
+  const [countrySelect, setCountrySelect] = useState("");
   const navigate = useNavigate();
   const [newUserData, setNewUserData] = useState({
     correoUser: "",
@@ -32,18 +32,18 @@ const CreateNewUser = () => {
     setNewUserData({
       ...newUserData,
       [target.name]: target.value,
-      countryUser: countrySelect
+      countryUser: countrySelect,
     });
-    console.log(target.name);
+    // console.log(target.name);
   };
-  
-  const countries = country.names().map(nombrePais => {
+
+  const countries = country.names().map((nombrePais) => {
     let newObject = {
-     value: nombrePais,
-     label: nombrePais
-   }
-   return newObject
- })
+      value: nombrePais,
+      label: nombrePais,
+    };
+    return newObject;
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -72,7 +72,7 @@ const CreateNewUser = () => {
             navigate("./CreateNewUser.jsx");
             setLoading(false);
           }
-          console.log(newUserData);
+          // console.log(newUserData);
         })
         .catch((error) => {
           Swal.fire({
@@ -81,12 +81,12 @@ const CreateNewUser = () => {
             text: "Este mail ya esta en uso",
           });
           setLoading(false);
-          navigate('/CreateNewUser')
+          navigate("/CreateNewUser");
         });
       e.target.reset();
     } else alert("Hay campos incompletos");
-    console.log(newUserData);
-    console.log(countrySelect);
+    // console.log(newUserData);
+    // console.log(countrySelect);
   };
 
   const handleBlur = ({ target }) => {
@@ -124,16 +124,12 @@ const CreateNewUser = () => {
     }
     return errores;
   };
- 
 
   // <div className="d-flex justify-content-center vh-100">
   //   <div className="spinner-border" role="status">
   //     <span className="visually-hidden">Loading...</span>
   //   </div>
   // </div>;
-
-
-  
 
   return (
     <>
@@ -222,11 +218,11 @@ const CreateNewUser = () => {
               <label htmlFor="userCountry" className="form-label">
                 Pais de residencia
               </label>
-              
+
               <Select
                 options={countries}
                 name="countryUser"
-                onChange={e=>setCountrySelect(e.value)}
+                onChange={(e) => setCountrySelect(e.value)}
                 onBlur={handleBlur}
                 id="userCountry"
                 className={`${styles.select}`}

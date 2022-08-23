@@ -29,8 +29,8 @@ function Carousel() {
                 </div>
                 {
                     juegosDestacados.map((juego) => {
-                        return (<div className="carousel-item ">
-                            <img src={juego.slider} className={`${styles.imagen} d-block w-100`} alt="Carousel1" />
+                        return (<div className="carousel-item" key={juego._id}>
+                            <img src={juego.slider} className={`${styles.imagen} d-block w-100`} alt="Carousel1" key={juego._id}/>
                         </div>)
                     })
                 }
