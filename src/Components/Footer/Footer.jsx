@@ -14,7 +14,6 @@ function Footer() {
             <Link to='*' className={`${styles.text} d-flex`}> Politica de Privacidad </Link>
             <Link to='*' className={`${styles.text} d-flex`}> Informacion legal </Link>
             <Link to='*' className={`${styles.text} d-flex`}> Tarjeta de Regalo </Link>
-            {/* <Link to='*' className={`${styles.text} d-flex`}> Acuerdo de Suscriptor a NawenGames </Link> */}
           </div>
           <div className="col-sm-12 col-md-4">
             <Link to='*' className={`${styles.text} d-flex`}> Reembolsos </Link>

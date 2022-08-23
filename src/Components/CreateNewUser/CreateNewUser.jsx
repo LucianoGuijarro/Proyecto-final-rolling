@@ -78,9 +78,10 @@ const CreateNewUser = () => {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: "Ha ocurrido un error y el usuario no se creo correcamente",
+            text: "Este mail ya esta en uso",
           });
-          console.log(error)
+          setLoading(false);
+          navigate('/CreateNewUser')
         });
       e.target.reset();
     } else alert("Hay campos incompletos");

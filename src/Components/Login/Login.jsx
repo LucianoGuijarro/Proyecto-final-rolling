@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
 import clientAxios from "../../Config/clientAxios";
 import styles from "../Login/Login.module.css";
+import Swal from 'sweetalert2';
 
 const Login = ({ flag, setFlag }) => {
   const [userInit, setUserInit] = useState({
@@ -19,28 +20,31 @@ const Login = ({ flag, setFlag }) => {
     clientAxios
       .post("/login", userInit)
       .then((response) => {
-        if (response.status === 401) {
-          return alert(
-            "El usuario o la contraseña ingresados no son correctos"
-          );
-        } else if (response.status === 400) {
-          return alert("No tiene autorizacion para logearse");
-        } else {
+        if (response.status === 200) {
           e.target.reset();
           setIsLoged(true);
           setFlag(!flag);
           localStorage.setItem("token", `${response.data.token}`);
           localStorage.setItem("nickName", `${response.data.nickName}`);
           localStorage.setItem("rol", `${response.data.rol}`);
-          alert(`Bienvenido/a ${response.data.nickName}`);
+          // alert(`Bienvenido/a ${response.data.nickName}`);
+          Swal.fire({
+            icon: 'success',
+            title: `Bienvenido/a ${response.data.nickName}`,
+            showConfirmButton: false,
+            timer: 1500
+        })
         }
       })
       .catch((error) => {
-        console.log(error);
+        if (error.response.status === 400 || error.response.status === 401) {
+          return Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'El usuario o la contraseña no son correctos',
+        })
+        }
       })
-      .catch((error) => {
-        console.log(error);
-      });
   };
   const handleChange = ({ target }) => {
     setUserInit({
