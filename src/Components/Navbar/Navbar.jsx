@@ -118,7 +118,7 @@ function Navbar({ rol, flag, setFlag }) {
                     >
                       {/* <li><button className={`{styles.text} dropdown-item text-white`} href="/">Perfil</button></li> */}
                       <li>
-                        <li>
+                        
                           <Link
                             className={`{styles.text} dropdown-item text-white`}
                             onClick={() => eliminandoLocalStorage()}
@@ -126,9 +126,8 @@ function Navbar({ rol, flag, setFlag }) {
                           >
                             Cerrar sesion
                           </Link>
-                        </li>
+                        
                       </li>
-                      <li>
                         {" "}
                         {rol === "admin" ? (
                           <li>
@@ -142,7 +141,6 @@ function Navbar({ rol, flag, setFlag }) {
                         ) : (
                           false
                         )}
-                      </li>
                     </ul>
                   </div>
                 </li>

@@ -141,7 +141,7 @@ const CreateNewUser = () => {
         </div>
       ) : (
         <div
-          className={`container col-sm-10 col-md-5 col-6 ${styles.formStyles} p-2 align-items-center`}
+          className={`container col-10 col-sm-10 col-md-5 col-6 ${styles.formStyles} p-2 align-items-center`}
         >
           <h5 className="py-3 ">CREAR TU NUEVA CUENTA</h5>
           <form onSubmit={handleSubmit}>
