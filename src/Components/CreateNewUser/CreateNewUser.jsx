@@ -34,7 +34,6 @@ const CreateNewUser = () => {
       [target.name]: target.value,
       countryUser: countrySelect,
     });
-    // console.log(target.name);
   };
 
   const countries = country.names().map((nombrePais) => {
@@ -72,7 +71,6 @@ const CreateNewUser = () => {
             navigate("./CreateNewUser.jsx");
             setLoading(false);
           }
-          // console.log(newUserData);
         })
         .catch((error) => {
           Swal.fire({
@@ -85,8 +83,6 @@ const CreateNewUser = () => {
         });
       e.target.reset();
     } else alert("Hay campos incompletos");
-    // console.log(newUserData);
-    // console.log(countrySelect);
   };
 
   const handleBlur = ({ target }) => {
@@ -124,13 +120,6 @@ const CreateNewUser = () => {
     }
     return errores;
   };
-
-  // <div className="d-flex justify-content-center vh-100">
-  //   <div className="spinner-border" role="status">
-  //     <span className="visually-hidden">Loading...</span>
-  //   </div>
-  // </div>;
-
   return (
     <>
       {loading ? (

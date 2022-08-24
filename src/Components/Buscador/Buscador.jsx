@@ -40,9 +40,6 @@ const Buscador = () => {
   const handleChange = async ({ target }) => {
     setSearch(target.value);
   };
-
-  // const captureInfo = (e) => {};
-
   return (
     <div className={`${styles.containerBuscadorMedia} container dropdown col-md-8 col-sm-12`}>
       <input
@@ -70,7 +67,6 @@ const Buscador = () => {
                 <Link
                   className={`dropdown-item`}
                   to={`verJuego/${juego._id}`}
-                  // onClick={captureInfo}
                   key={juego._id}
                 >
                   {juego.nombre}

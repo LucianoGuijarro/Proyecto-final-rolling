@@ -61,7 +61,7 @@ const VerUsuarios = () => {
   };
   return (
     <>
-      <div className="container">
+      <div className="container table-responsive">
         <table className="table">
           <thead>
             <tr className="text-light">

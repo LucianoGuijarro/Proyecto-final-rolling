@@ -9,7 +9,6 @@ const AgregarJuego = () => {
     });
     const handleForm = (e) => {
         e.preventDefault();
-        console.log(juegoNuevo)
         clientAxios.post('/juegos/agregarJuego', {
             nombre: juegoNuevo.nombre,
             fechaLanzamiento: juegoNuevo.fechaLanzamiento,
@@ -54,7 +53,7 @@ const AgregarJuego = () => {
     return (
         <>
             <div className="container">
-                <h2 className='text-light text-center'>¿Que juego desea agregar?</h2>
+                <h2 className='text-light text-center mt-5'>¿Que juego desea agregar?</h2>
                 <form onSubmit={handleForm} className='d-flex justify-content-center'>
                     <div className="row flex-column">
                         <div className='my-4'>
@@ -65,10 +64,6 @@ const AgregarJuego = () => {
                             <label className='text-light' htmlFor="fechaLanzamiento">Fecha de Lanzamiento</label>
                             <input className={`${styles.inputJuego} form-control ms-3`} type="date" max={'2024-01-01'} min={'1990-01-01'} id='fechaLanzamiento' name='fechaLanzamiento' onChange={handleChange} required />
                         </div>
-                        {/* <div className='my-4'>
-                            <label className='text-light' htmlFor="categoria">Categoria</label>
-                            <input maxLength={15} className={` ${styles.inputJuego} ms-3`} type="text" id='categoria' name='categoria' onChange={handleChange} required />
-                        </div> */}
                         <div className='my-4'>
                             <label className='text-light form-label' htmlFor="categoria">Categoria</label>
                             <select className={`${styles.inputJuego} form-control ms-3`} id='categoria' name='categoria' onChange={handleChange}>

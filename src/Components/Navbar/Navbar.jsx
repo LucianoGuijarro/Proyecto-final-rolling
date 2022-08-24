@@ -8,16 +8,6 @@ function Navbar({ rol, flag, setFlag }) {
     localStorage.clear();
     setFlag(!flag);
   };
-  // const [nickNameStorage, setNickNameStorage] = useState()
-  // const any = localStorage.getItem('nickName')
-  // setNickNameStorage(localStorage.getItem('nickName'))
-
-  // setNickNameStorage(any)
-  // console.log(any);
-  // console.log(nickNameStorage);
-
-  // console.log(localStorage.getItem("nickName"))
-
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
@@ -99,7 +89,6 @@ function Navbar({ rol, flag, setFlag }) {
           <ul className={`navbar-nav d-flex justify-content-end align-items-center ${styles.butonsBuscador}`}>
             <Buscador />
             {localStorage.getItem("nickName") != null ? (
-              // nickNameStorage == null
               <>
                 <li className="nav-item">
                   <div className="btn-group" role="group">
@@ -116,7 +105,6 @@ function Navbar({ rol, flag, setFlag }) {
                       className={`dropdown-menu ${styles.bgColorDropdown}`}
                       aria-labelledby="btnGroupDrop1"
                     >
-                      {/* <li><button className={`{styles.text} dropdown-item text-white`} href="/">Perfil</button></li> */}
                       <li>
                         
                           <Link

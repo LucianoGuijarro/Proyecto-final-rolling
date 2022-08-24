@@ -27,7 +27,6 @@ const Login = ({ flag, setFlag }) => {
           localStorage.setItem("token", `${response.data.token}`);
           localStorage.setItem("nickName", `${response.data.nickName}`);
           localStorage.setItem("rol", `${response.data.rol}`);
-          // alert(`Bienvenido/a ${response.data.nickName}`);
           Swal.fire({
             icon: 'success',
             title: `Bienvenido/a ${response.data.nickName}`,

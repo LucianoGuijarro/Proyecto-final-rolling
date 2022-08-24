@@ -24,7 +24,7 @@ const JuegosDetallados = () => {
             <p className='fs-5 text-light'><strong className='fs-4 text-light'>Fecha de lanzamiento:</strong> {juego.fechaLanzamiento}</p>
             <p className='fs-5 text-light'><strong className='fs-4 text-light'>Categoria:</strong> {juego.categoria}</p>
             <p className='fs-5 text-light'><strong className='fs--4 text-light'>Precio:</strong> {`€${juego.precio}`}</p>
-            <Link to='/*'><button className='btn btn-success'>Comprar Ahora</button></Link>
+            {usuarioLogeado ? <Link to='/*'><button className='btn btn-success'>Comprar Ahora</button></Link> : false }
           </div>
         </div>
         <div className={`row justify-content-center my-4`}>
@@ -41,7 +41,7 @@ const JuegosDetallados = () => {
             <textarea className="form-control" id="comentario" name='comentario'></textarea>
             <label htmlFor='comentario'>Escribe tu comentario aqui</label>
           </div>
-          <button type='submit' className={`${styles.boton} btn btn-success`}>Enviar comentario</button>
+          <button type='submit' className={`${styles.boton} btn btn-success`}>Enviar</button>
         </form>
         :
         false

@@ -10,7 +10,6 @@ const VerTodosJuegos = () => {
         clientAxios.get('/juegos/verJuegos')
         .then(response => {
             setJuegos(response.data)
-            console.log(response.data);
         })
     }, [flag])
 
