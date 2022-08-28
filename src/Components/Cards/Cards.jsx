@@ -16,6 +16,7 @@ const Cards = ({ juego, flag, setFlag }) => {
     nombre: juego.nombre,
     categoria: juego.categoria,
     slider: juego.slider,
+    paginaCompra: juego.paginaCompra
   });
   const [destacado, setDestacado] = useState(juego.destacado);
   const confirmarDestacado = () => {
@@ -191,10 +192,6 @@ const Cards = ({ juego, flag, setFlag }) => {
                   name="nombre"
                 />
               </div>
-              {/* <div className='my-4'>
-                                <label htmlFor="categoria">Categoria</label>
-                                <input maxLength={15} className={` ${styles.inputJuego} ms-3`} onChange={handleChange} defaultValue={juego.categoria} type="text" id='categoria' name='categoria' />
-                            </div> */}
               <div className="my-4">
                 <label className="form-label" htmlFor="categoria">
                   Categoria
@@ -206,8 +203,6 @@ const Cards = ({ juego, flag, setFlag }) => {
                   name="categoria"
                   onChange={handleChange}
                 >
-                  {/* <option selected>Seleccione una categoria</option> */}
-                  {/* <option defaultValue={`Seleccione una categoria`}>asdasd</option> */}
                   <option value="accion">Accion</option>
                   <option value="aventura">Aventura</option>
                   <option value="deportes">Deportes</option>
@@ -264,6 +259,19 @@ const Cards = ({ juego, flag, setFlag }) => {
                   defaultValue={juego.trailer}
                   id="trailer"
                   name="trailer"
+                />
+              </div>
+              <div className="my-4">
+                <label className="form-label" htmlFor="paginaCompra">
+                  Pagina de compra
+                </label>
+                <input
+                  className={` ${styles.inputJuego} ms-3`}
+                  type="url"
+                  onChange={handleChange}
+                  defaultValue={juego.paginaCompra}
+                  id="paginaCompra"
+                  name="paginaCompra"
                 />
               </div>
               <div className="modal-footer">

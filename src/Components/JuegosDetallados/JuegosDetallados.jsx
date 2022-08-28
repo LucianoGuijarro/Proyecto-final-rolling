@@ -11,6 +11,9 @@ const JuegosDetallados = () => {
     clientAxios.get(`/juegos/verJuego/${id}`)
       .then(response => setJuego(response.data))
   }, [id])
+  const redireccion = () => {
+    window.location.href = juego.paginaCompra
+  }
   return (
     <>
       <div className="container mt-5">
@@ -24,7 +27,7 @@ const JuegosDetallados = () => {
             <p className='fs-5 text-light'><strong className='fs-4 text-light'>Fecha de lanzamiento:</strong> {juego.fechaLanzamiento}</p>
             <p className='fs-5 text-light'><strong className='fs-4 text-light'>Categoria:</strong> {juego.categoria}</p>
             <p className='fs-5 text-light'><strong className='fs--4 text-light'>Precio:</strong> {`€${juego.precio}`}</p>
-            {usuarioLogeado ? <Link to='/*'><button className='btn btn-success'>Comprar Ahora</button></Link> : false }
+            {usuarioLogeado ? <Link to={`/verJuego/${id}`}><button onClick={() => redireccion()} className='btn btn-success'>Comprar Ahora</button></Link> : false }
           </div>
         </div>
         <div className={`row justify-content-center my-4`}>

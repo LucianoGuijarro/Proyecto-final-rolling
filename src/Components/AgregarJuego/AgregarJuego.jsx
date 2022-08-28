@@ -5,7 +5,7 @@ import styles from './AgregarJuego.module.css';
 
 const AgregarJuego = () => {
     const [juegoNuevo, setJuegoNuevo] = useState({
-        nombre: "", fechaLanzamiento: "", categoria: "", precio: "", portada: "", trailer: "", sinopsis: "", destacado: "false", slider: ""
+        nombre: "", fechaLanzamiento: "", categoria: "", precio: "", portada: "", trailer: "", sinopsis: "", destacado: "false", slider: "", paginaCompra: ""
     });
     const handleForm = (e) => {
         e.preventDefault();
@@ -18,7 +18,8 @@ const AgregarJuego = () => {
             trailer: juegoNuevo.trailer,
             sinopsis: juegoNuevo.sinopsis,
             destacado: juegoNuevo.destacado,
-            slider: juegoNuevo.slider
+            slider: juegoNuevo.slider,
+            paginaCompra: juegoNuevo.paginaCompra
         }).then(response => {
             if (response.status === 201) {
                 Swal.fire({
@@ -88,6 +89,10 @@ const AgregarJuego = () => {
                         <div className='my-4'>
                             <label className='text-light form-label' htmlFor="trailer">Trailer</label>
                             <input className={` ${styles.inputJuego} form-control ms-3`} type="url" id='trailer' onChange={handleChange} name='trailer' />
+                        </div>
+                        <div className='my-4'>
+                            <label className='text-light form-label' htmlFor="paginaCompra">Pagina de compra</label>
+                            <input className={` ${styles.inputJuego} form-control ms-3`} type="url" id='paginaCompra' onChange={handleChange} name='paginaCompra' />
                         </div>
                         <div className='my-4'>
                             <label className='text-light form-label' htmlFor="sinopsis">Sinopsis</label>
