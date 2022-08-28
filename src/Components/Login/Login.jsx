@@ -36,11 +36,18 @@ const Login = ({ flag, setFlag }) => {
         }
       })
       .catch((error) => {
-        if (error.response.status === 400 || error.response.status === 401) {
+        if (error.response.status === 400) {
           return Swal.fire({
             icon: 'error',
             title: 'Error',
             text: 'El usuario o la contraseña no son correctos',
+        })
+        }
+        if(error.response.status === 401) {
+          return Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'El usuario se encuentra suspendido momentaneamente',
         })
         }
       })
