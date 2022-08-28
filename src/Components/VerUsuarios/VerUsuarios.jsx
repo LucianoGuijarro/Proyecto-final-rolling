@@ -19,7 +19,8 @@ const VerUsuarios = () => {
       })
       .then((response) => {
         if (response.status === 200) {
-          alert("El usuario fue editado correctamente");
+          alert("El usuario fue editado correctamente")
+          setFlag(!flag);
         } else {
           alert("Hubo un error y no se pudo suspender al usuario");
         }
