@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useHref, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import clientAxios from '../../Config/clientAxios';
 import styles from './JuegosDetallados.module.css';
 
@@ -12,7 +12,6 @@ const JuegosDetallados = () => {
       .then(response => setJuego(response.data))
   }, [id])
   const redireccion = () => {
-    // window.location.href = juego.paginaCompra
     window.open(juego.paginaCompra)
   }
   return (
