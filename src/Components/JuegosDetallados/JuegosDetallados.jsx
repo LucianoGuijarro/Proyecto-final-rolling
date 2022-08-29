@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useHref, useParams } from 'react-router-dom'
 import clientAxios from '../../Config/clientAxios';
 import styles from './JuegosDetallados.module.css';
 
@@ -12,7 +12,8 @@ const JuegosDetallados = () => {
       .then(response => setJuego(response.data))
   }, [id])
   const redireccion = () => {
-    window.location.href = juego.paginaCompra
+    // window.location.href = juego.paginaCompra
+    window.open(juego.paginaCompra)
   }
   return (
     <>
@@ -27,7 +28,7 @@ const JuegosDetallados = () => {
             <p className='fs-5 text-light'><strong className='fs-4 text-light'>Fecha de lanzamiento:</strong> {juego.fechaLanzamiento}</p>
             <p className='fs-5 text-light'><strong className='fs-4 text-light'>Categoria:</strong> {juego.categoria}</p>
             <p className='fs-5 text-light'><strong className='fs--4 text-light'>Precio:</strong> {`€${juego.precio}`}</p>
-            {usuarioLogeado ? <Link to={`/verJuego/${id}`}><button onClick={() => redireccion()} className='btn btn-success'>Comprar Ahora</button></Link> : false }
+            {usuarioLogeado ?<button onClick={() => redireccion()} className='btn btn-success'>Comprar Ahora</button>  : false }
           </div>
         </div>
         <div className={`row justify-content-center my-4`}>
