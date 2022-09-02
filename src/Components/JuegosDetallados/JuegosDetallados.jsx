@@ -85,7 +85,7 @@ const JuegosDetallados = () => {
         <h3 className='text-light text-center pt-3'>Comentarios</h3>
         {comentarios.map(comentario=>
          <div className='container'>
-          <div className='row justify-content-center'><CajaComentarios comentarios={comentario} /></div>
+          <div className='row justify-content-center'><CajaComentarios comentarios={comentario} flag={flag} setFlag={setFlag} /></div>
          </div>)}
         {
           usuarioLogeado ? <form className={`row justify-content-center`} onSubmit={handleForm}>

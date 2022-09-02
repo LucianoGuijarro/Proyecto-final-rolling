@@ -10,7 +10,7 @@ const AgregarCategoria = () => {
     const handleForm = (e) => {
         e.preventDefault();
         clientAxios.post('/categorias/agregarCategoria', {
-            nombre: categoriaNueva.nombre
+            nombre: categoriaNueva.nombre.toLowerCase()
         }).then(response => {
             if (response.status === 201) {
                 Swal.fire({
@@ -27,12 +27,20 @@ const AgregarCategoria = () => {
                 })
             }
             e.target.reset()
-        }).catch(error => {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Ha ocurrido un error y no se pudo agregar la categoria',
-            })
+        }).catch((error) => {
+            if(error.response.status === 403){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No tiene permiso para realizar esta funcion',
+                })
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ha ocurrido un error y no se pudo agregar la categoria',
+                })
+            }
         })
     }
     const handleChange = (e) => {

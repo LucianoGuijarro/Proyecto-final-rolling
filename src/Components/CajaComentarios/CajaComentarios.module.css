@@ -1,3 +1,11 @@
 .fondoComentarios {
     background: rgb(62, 71, 71);
 }
+.boton{
+    border: none;
+    background: none;
+    float: right;
+}
+.boton:hover{
+    color: rgb(5, 5, 131);
+}
